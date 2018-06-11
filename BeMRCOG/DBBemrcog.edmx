@@ -1,0 +1,2534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBBemrcogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblChat">
+          <Key>
+            <PropertyRef Name="CHAT_ID" />
+          </Key>
+          <Property Name="CHAT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CHAT_USER_ID" Type="int" Nullable="false" />
+          <Property Name="CONNECTION_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SESSION_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEXT" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="URL" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="SCROLEPOSITION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PLATFORM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LANGUAGE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BROWSER" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="COUNTRY" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CITY" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CRTD_DATE" Type="datetime" Nullable="false" />
+          <Property Name="IsVisibleToUser" Type="bit" Nullable="false" />
+          <Property Name="isAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblChatOLD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="ADMIN_ID" Type="int" Nullable="false" />
+          <Property Name="isAdmin" Type="bit" Nullable="false" />
+          <Property Name="CHAT" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CRTD_TIME" Type="datetime" Nullable="false" />
+          <Property Name="CONNECTION_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="URL" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SCROLEPOSITION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PLATFORM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LANGUAGE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BROWSER" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblChatRoles">
+          <Key>
+            <PropertyRef Name="CHAT_ROLE_ID" />
+          </Key>
+          <Property Name="CHAT_ROLE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROLE_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" Nullable="false" />
+          <Property Name="CRTD_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDT_BY" Type="int" Nullable="false" />
+          <Property Name="UPDT_DATE" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblChatUsers">
+          <Key>
+            <PropertyRef Name="CHAT_USER_ID" />
+          </Key>
+          <Property Name="CHAT_USER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CHAT_USERNAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CHAT_USER_EMAIL" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CHAT_USER_IMAGE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CHAT_USER_PASSWORD" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CHAT_ROLE_ID" Type="int" Nullable="false" />
+          <Property Name="CHAT_STATUS_ID" Type="int" Nullable="false" />
+          <Property Name="CONNECTION_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsEmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="COUNTRY" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" Nullable="false" />
+          <Property Name="CRTD_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDT_BY" Type="int" Nullable="false" />
+          <Property Name="UPDT_DATE" Type="datetime" Nullable="false" />
+          <Property Name="IsActiveChat" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCourse">
+          <Key>
+            <PropertyRef Name="COURSE_ID" />
+          </Key>
+          <Property Name="COURSE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COURSE_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="COURSE_IMAGE" Type="nvarchar(max)" />
+          <Property Name="COURSE_START_DATE" Type="datetime" />
+          <Property Name="COURSE_END_DATE" Type="datetime" />
+          <Property Name="COURSE_TYPE_ID" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCourseDetail">
+          <Key>
+            <PropertyRef Name="COURSE_DETAIL_ID" />
+          </Key>
+          <Property Name="COURSE_DETAIL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COURSE_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="COURSE_ID" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCourseModules">
+          <Key>
+            <PropertyRef Name="COURSE_MODULE_ID" />
+          </Key>
+          <Property Name="COURSE_MODULE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COURSE_ID" Type="int" />
+          <Property Name="MODULE_ID" Type="int" />
+          <Property Name="COURSE_MODULE_SORTORDER" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCoursePackages">
+          <Key>
+            <PropertyRef Name="COURSE_PACKAGE_ID" />
+          </Key>
+          <Property Name="COURSE_PACKAGE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COURSE_ID" Type="int" Nullable="false" />
+          <Property Name="PACKAGE_ID" Type="int" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCourseType">
+          <Key>
+            <PropertyRef Name="COURSE_TYPE_ID" />
+          </Key>
+          <Property Name="COURSE_TYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COURSE_TYPE_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEvents">
+          <Key>
+            <PropertyRef Name="EVENT_ID" />
+          </Key>
+          <Property Name="EVENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HEADING" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EVENT_IMAGE" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="START_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="END_DATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="SHORT_DESCRIPTION" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="CRTD_DATE" Type="datetime" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" Nullable="false" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblModuleDetail">
+          <Key>
+            <PropertyRef Name="MODULE_DETAIL_ID" />
+          </Key>
+          <Property Name="MODULE_DETAIL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MODULE_ID" Type="int" />
+          <Property Name="MODULE_DETAIL_DESCRIPTION" Type="nvarchar" MaxLength="50" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblModules">
+          <Key>
+            <PropertyRef Name="MODULE_ID" />
+          </Key>
+          <Property Name="MODULE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MODULE_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblModuleTopics">
+          <Key>
+            <PropertyRef Name="MODULE_TOPIC_ID" />
+          </Key>
+          <Property Name="MODULE_TOPIC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MODULE_ID" Type="int" />
+          <Property Name="TOPIC_ID" Type="int" />
+          <Property Name="MODULE_TOPIC_SORTORDER" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPackageModuleCount">
+          <Key>
+            <PropertyRef Name="PACKAGE_MODULE_COUNT_ID" />
+          </Key>
+          <Property Name="PACKAGE_MODULE_COUNT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PACKAGE_ID" Type="int" Nullable="false" />
+          <Property Name="MODULE_COUNT" Type="int" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPackages">
+          <Key>
+            <PropertyRef Name="PACKAGE_ID" />
+          </Key>
+          <Property Name="PACKAGE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PACKAGE_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PACKAGE_PRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProducts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IMAGE" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DETAIL" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="STRIKE_PRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblQuestionAnswers">
+          <Key>
+            <PropertyRef Name="QUESTION_ANSWER_ID" />
+          </Key>
+          <Property Name="QUESTION_ANSWER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="int" Nullable="false" />
+          <Property Name="CORRECT_ANSWER" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblQuestionChoices">
+          <Key>
+            <PropertyRef Name="QUESTION_CHOICE_ID" />
+          </Key>
+          <Property Name="QUESTION_CHOICE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="int" Nullable="false" />
+          <Property Name="CHOICE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblQuestions">
+          <Key>
+            <PropertyRef Name="QUESTION_ID" />
+          </Key>
+          <Property Name="QUESTION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QUESTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblQuizes">
+          <Key>
+            <PropertyRef Name="QUIZ_ID" />
+          </Key>
+          <Property Name="QUIZ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QUIZ_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="QUIZ_TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblQuizProgress">
+          <Key>
+            <PropertyRef Name="QUIZ_PROGRESS_ID" />
+          </Key>
+          <Property Name="QUIZ_PROGRESS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="QUIZ_ID" Type="int" Nullable="false" />
+          <Property Name="TIME_SPENT" Type="datetime" Nullable="false" />
+          <Property Name="QUIZ_RESULT" Type="int" Nullable="false" />
+          <Property Name="QUIZ_ATTEMPT" Type="int" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblQuizQuestions">
+          <Key>
+            <PropertyRef Name="QUIZ_QUESTION_ID" />
+          </Key>
+          <Property Name="QUIZ_QUESTION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QUIZ_ID" Type="int" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="int" Nullable="false" />
+          <Property Name="SORTORDER" Type="int" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblReviews">
+          <Key>
+            <PropertyRef Name="REVIEW_ID" />
+          </Key>
+          <Property Name="REVIEW_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REVIEW_HEADING" Type="nvarchar" MaxLength="100" />
+          <Property Name="REVIEW_DESCRIPTION" Type="nvarchar" MaxLength="2000" />
+          <Property Name="STUDENT_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="STUDENT_TITLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="STUDENT_IMAGE" Type="nvarchar" MaxLength="100" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROLE_NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSlider">
+          <Key>
+            <PropertyRef Name="SLIDER_ID" />
+          </Key>
+          <Property Name="SLIDER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IMAGE_URL" Type="nvarchar" MaxLength="100" />
+          <Property Name="DESCRIPTION_1" Type="nvarchar" MaxLength="200" />
+          <Property Name="DESCRIPTION_2" Type="nvarchar" MaxLength="200" />
+          <Property Name="DESCRIPTION_3" Type="nvarchar" MaxLength="200" />
+          <Property Name="DESCRIPTION_4" Type="nvarchar" MaxLength="200" />
+          <Property Name="BG_COLOR" Type="nvarchar" MaxLength="50" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTopic">
+          <Key>
+            <PropertyRef Name="TOPIC_ID" />
+          </Key>
+          <Property Name="TOPIC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TOPIC_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTopicFeedBack">
+          <Key>
+            <PropertyRef Name="TOPIC_FEEDBACK_ID" />
+          </Key>
+          <Property Name="TOPIC_FEEDBACK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TOPIC_ID" Type="int" Nullable="false" />
+          <Property Name="FEEDBACK_ID" Type="int" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTopicUnitsQuizes">
+          <Key>
+            <PropertyRef Name="TOPIC_UNITS_QUIZES_ID" />
+          </Key>
+          <Property Name="TOPIC_UNITS_QUIZES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TOPIC_ID" Type="int" Nullable="false" />
+          <Property Name="UNIT_ID" Type="int" />
+          <Property Name="QUIZ_ID" Type="int" />
+          <Property Name="TOPIC_UNITS_SORTORDER" Type="int" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUnits">
+          <Key>
+            <PropertyRef Name="UNIT_ID" />
+          </Key>
+          <Property Name="UNIT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UNIT_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AUDIO_LINK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PDF_LINK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VIDEO_LINK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUnitsProgress">
+          <Key>
+            <PropertyRef Name="UNIT_PROGRESS_ID" />
+          </Key>
+          <Property Name="UNIT_PROGRESS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="UNIT_ID" Type="int" Nullable="false" />
+          <Property Name="TIME_SPENT" Type="datetime" Nullable="false" />
+          <Property Name="UNITS_STATUS" Type="int" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="USER_EMAIL" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="USER_IMAGE" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="ROLE_ID" Type="int" Nullable="false" />
+          <Property Name="STATUS" Type="int" Nullable="false" />
+          <Property Name="CONNECTED_PARENT" Type="int" Nullable="false" />
+          <Property Name="CRTD_DATE" Type="datetime" Nullable="false" />
+          <Property Name="RECONNECTED_DATE" Type="datetime" />
+          <Property Name="CONNECTION_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUserCoursePurchase">
+          <Key>
+            <PropertyRef Name="USER_COURSE_PURCHASE_ID" />
+          </Key>
+          <Property Name="USER_COURSE_PURCHASE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COURSE_PACKAGE_ID" Type="int" Nullable="false" />
+          <Property Name="USER_ID" Type="int" />
+          <Property Name="COURSE_PACKAGE_PRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUserModuleSubscription">
+          <Key>
+            <PropertyRef Name="USER_MODULE_SUBSCRIPTION_ID" />
+          </Key>
+          <Property Name="USER_MODULE_SUBSCRIPTION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="COURSE_ID" Type="int" Nullable="false" />
+          <Property Name="MODULE_ID" Type="int" Nullable="false" />
+          <Property Name="CRTD_BY" Type="int" />
+          <Property Name="CRTD_DATE" Type="datetime" />
+          <Property Name="UPDT_BY" Type="int" />
+          <Property Name="UPDT_DATE" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblCourse_tblCourseType">
+          <End Role="tblCourseType" Type="Self.tblCourseType" Multiplicity="0..1" />
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourseType">
+              <PropertyRef Name="COURSE_TYPE_ID" />
+            </Principal>
+            <Dependent Role="tblCourse">
+              <PropertyRef Name="COURSE_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourseDetail_tblCourse">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="0..1" />
+          <End Role="tblCourseDetail" Type="Self.tblCourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="tblCourseDetail">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourseModules_tblCourse">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="0..1" />
+          <End Role="tblCourseModules" Type="Self.tblCourseModules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="tblCourseModules">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourseModules_tblModules">
+          <End Role="tblModules" Type="Self.tblModules" Multiplicity="0..1" />
+          <End Role="tblCourseModules" Type="Self.tblCourseModules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblModules">
+              <PropertyRef Name="MODULE_ID" />
+            </Principal>
+            <Dependent Role="tblCourseModules">
+              <PropertyRef Name="MODULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoursePackages_tblCourse">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="1" />
+          <End Role="tblCoursePackages" Type="Self.tblCoursePackages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="tblCoursePackages">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoursePackages_tblPackages">
+          <End Role="tblPackages" Type="Self.tblPackages" Multiplicity="1" />
+          <End Role="tblCoursePackages" Type="Self.tblCoursePackages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPackages">
+              <PropertyRef Name="PACKAGE_ID" />
+            </Principal>
+            <Dependent Role="tblCoursePackages">
+              <PropertyRef Name="PACKAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblModuleDetail_tblModules">
+          <End Role="tblModules" Type="Self.tblModules" Multiplicity="0..1" />
+          <End Role="tblModuleDetail" Type="Self.tblModuleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblModules">
+              <PropertyRef Name="MODULE_ID" />
+            </Principal>
+            <Dependent Role="tblModuleDetail">
+              <PropertyRef Name="MODULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblModuleTopics_tblModules">
+          <End Role="tblModules" Type="Self.tblModules" Multiplicity="0..1" />
+          <End Role="tblModuleTopics" Type="Self.tblModuleTopics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblModules">
+              <PropertyRef Name="MODULE_ID" />
+            </Principal>
+            <Dependent Role="tblModuleTopics">
+              <PropertyRef Name="MODULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblModuleTopics_tblTopic">
+          <End Role="tblTopic" Type="Self.tblTopic" Multiplicity="0..1" />
+          <End Role="tblModuleTopics" Type="Self.tblModuleTopics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTopic">
+              <PropertyRef Name="TOPIC_ID" />
+            </Principal>
+            <Dependent Role="tblModuleTopics">
+              <PropertyRef Name="TOPIC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPackageModuleCount_tblPackages">
+          <End Role="tblPackages" Type="Self.tblPackages" Multiplicity="1" />
+          <End Role="tblPackageModuleCount" Type="Self.tblPackageModuleCount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPackages">
+              <PropertyRef Name="PACKAGE_ID" />
+            </Principal>
+            <Dependent Role="tblPackageModuleCount">
+              <PropertyRef Name="PACKAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuestionAnswers_tblQuestions">
+          <End Role="tblQuestions" Type="Self.tblQuestions" Multiplicity="1" />
+          <End Role="tblQuestionAnswers" Type="Self.tblQuestionAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuestions">
+              <PropertyRef Name="QUESTION_ID" />
+            </Principal>
+            <Dependent Role="tblQuestionAnswers">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuestionChoices_tblQuestions">
+          <End Role="tblQuestions" Type="Self.tblQuestions" Multiplicity="1" />
+          <End Role="tblQuestionChoices" Type="Self.tblQuestionChoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuestions">
+              <PropertyRef Name="QUESTION_ID" />
+            </Principal>
+            <Dependent Role="tblQuestionChoices">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuizProgress_tblQuizes">
+          <End Role="tblQuizes" Type="Self.tblQuizes" Multiplicity="1" />
+          <End Role="tblQuizProgress" Type="Self.tblQuizProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuizes">
+              <PropertyRef Name="QUIZ_ID" />
+            </Principal>
+            <Dependent Role="tblQuizProgress">
+              <PropertyRef Name="QUIZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuizProgress_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblQuizProgress" Type="Self.tblQuizProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="tblQuizProgress">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuizQuestions_tblQuestions">
+          <End Role="tblQuestions" Type="Self.tblQuestions" Multiplicity="1" />
+          <End Role="tblQuizQuestions" Type="Self.tblQuizQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuestions">
+              <PropertyRef Name="QUESTION_ID" />
+            </Principal>
+            <Dependent Role="tblQuizQuestions">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuizQuestions_tblQuizes">
+          <End Role="tblQuizes" Type="Self.tblQuizes" Multiplicity="1" />
+          <End Role="tblQuizQuestions" Type="Self.tblQuizQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuizes">
+              <PropertyRef Name="QUIZ_ID" />
+            </Principal>
+            <Dependent Role="tblQuizQuestions">
+              <PropertyRef Name="QUIZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTopicFeedBack_tblTopic">
+          <End Role="tblTopic" Type="Self.tblTopic" Multiplicity="1" />
+          <End Role="tblTopicFeedBack" Type="Self.tblTopicFeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTopic">
+              <PropertyRef Name="TOPIC_ID" />
+            </Principal>
+            <Dependent Role="tblTopicFeedBack">
+              <PropertyRef Name="TOPIC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTopicUnitsQuizes_tblQuizes">
+          <End Role="tblQuizes" Type="Self.tblQuizes" Multiplicity="0..1" />
+          <End Role="tblTopicUnitsQuizes" Type="Self.tblTopicUnitsQuizes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuizes">
+              <PropertyRef Name="QUIZ_ID" />
+            </Principal>
+            <Dependent Role="tblTopicUnitsQuizes">
+              <PropertyRef Name="QUIZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTopicUnitsQuizes_tblTopic">
+          <End Role="tblTopic" Type="Self.tblTopic" Multiplicity="1" />
+          <End Role="tblTopicUnitsQuizes" Type="Self.tblTopicUnitsQuizes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTopic">
+              <PropertyRef Name="TOPIC_ID" />
+            </Principal>
+            <Dependent Role="tblTopicUnitsQuizes">
+              <PropertyRef Name="TOPIC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTopicUnitsQuizes_tblUnits">
+          <End Role="tblUnits" Type="Self.tblUnits" Multiplicity="0..1" />
+          <End Role="tblTopicUnitsQuizes" Type="Self.tblTopicUnitsQuizes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUnits">
+              <PropertyRef Name="UNIT_ID" />
+            </Principal>
+            <Dependent Role="tblTopicUnitsQuizes">
+              <PropertyRef Name="UNIT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUnitsProgress_tblUnits">
+          <End Role="tblUnits" Type="Self.tblUnits" Multiplicity="1" />
+          <End Role="tblUnitsProgress" Type="Self.tblUnitsProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUnits">
+              <PropertyRef Name="UNIT_ID" />
+            </Principal>
+            <Dependent Role="tblUnitsProgress">
+              <PropertyRef Name="UNIT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUnitsProgress_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUnitsProgress" Type="Self.tblUnitsProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="tblUnitsProgress">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserCoursePurchase_tblCoursePackages">
+          <End Role="tblCoursePackages" Type="Self.tblCoursePackages" Multiplicity="1" />
+          <End Role="tblUserCoursePurchase" Type="Self.tblUserCoursePurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoursePackages">
+              <PropertyRef Name="COURSE_PACKAGE_ID" />
+            </Principal>
+            <Dependent Role="tblUserCoursePurchase">
+              <PropertyRef Name="COURSE_PACKAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserCoursePurchase_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserCoursePurchase" Type="Self.tblUserCoursePurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="tblUserCoursePurchase">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserModuleSubscription_tblCourse">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="1" />
+          <End Role="tblUserModuleSubscription" Type="Self.tblUserModuleSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="tblUserModuleSubscription">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserModuleSubscription_tblModules">
+          <End Role="tblModules" Type="Self.tblModules" Multiplicity="1" />
+          <End Role="tblUserModuleSubscription" Type="Self.tblUserModuleSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblModules">
+              <PropertyRef Name="MODULE_ID" />
+            </Principal>
+            <Dependent Role="tblUserModuleSubscription">
+              <PropertyRef Name="MODULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserModuleSubscription_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUserModuleSubscription" Type="Self.tblUserModuleSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="tblUserModuleSubscription">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBemrcogModelStoreContainer">
+          <EntitySet Name="tblChat" EntityType="Self.tblChat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblChatOLD" EntityType="Self.tblChatOLD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblChatRoles" EntityType="Self.tblChatRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblChatUsers" EntityType="Self.tblChatUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCourse" EntityType="Self.tblCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCourseDetail" EntityType="Self.tblCourseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCourseModules" EntityType="Self.tblCourseModules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCoursePackages" EntityType="Self.tblCoursePackages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCourseType" EntityType="Self.tblCourseType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEvents" EntityType="Self.tblEvents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblModuleDetail" EntityType="Self.tblModuleDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblModules" EntityType="Self.tblModules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblModuleTopics" EntityType="Self.tblModuleTopics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPackageModuleCount" EntityType="Self.tblPackageModuleCount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPackages" EntityType="Self.tblPackages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProducts" EntityType="Self.tblProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuestionAnswers" EntityType="Self.tblQuestionAnswers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuestionChoices" EntityType="Self.tblQuestionChoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuestions" EntityType="Self.tblQuestions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuizes" EntityType="Self.tblQuizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuizProgress" EntityType="Self.tblQuizProgress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuizQuestions" EntityType="Self.tblQuizQuestions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblReviews" EntityType="Self.tblReviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSlider" EntityType="Self.tblSlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTopic" EntityType="Self.tblTopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTopicFeedBack" EntityType="Self.tblTopicFeedBack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTopicUnitsQuizes" EntityType="Self.tblTopicUnitsQuizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUnits" EntityType="Self.tblUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUnitsProgress" EntityType="Self.tblUnitsProgress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserCoursePurchase" EntityType="Self.tblUserCoursePurchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserModuleSubscription" EntityType="Self.tblUserModuleSubscription" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblCourse_tblCourseType" Association="Self.FK_tblCourse_tblCourseType">
+            <End Role="tblCourseType" EntitySet="tblCourseType" />
+            <End Role="tblCourse" EntitySet="tblCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourseDetail_tblCourse" Association="Self.FK_tblCourseDetail_tblCourse">
+            <End Role="tblCourse" EntitySet="tblCourse" />
+            <End Role="tblCourseDetail" EntitySet="tblCourseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourseModules_tblCourse" Association="Self.FK_tblCourseModules_tblCourse">
+            <End Role="tblCourse" EntitySet="tblCourse" />
+            <End Role="tblCourseModules" EntitySet="tblCourseModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourseModules_tblModules" Association="Self.FK_tblCourseModules_tblModules">
+            <End Role="tblModules" EntitySet="tblModules" />
+            <End Role="tblCourseModules" EntitySet="tblCourseModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoursePackages_tblCourse" Association="Self.FK_tblCoursePackages_tblCourse">
+            <End Role="tblCourse" EntitySet="tblCourse" />
+            <End Role="tblCoursePackages" EntitySet="tblCoursePackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoursePackages_tblPackages" Association="Self.FK_tblCoursePackages_tblPackages">
+            <End Role="tblPackages" EntitySet="tblPackages" />
+            <End Role="tblCoursePackages" EntitySet="tblCoursePackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblModuleDetail_tblModules" Association="Self.FK_tblModuleDetail_tblModules">
+            <End Role="tblModules" EntitySet="tblModules" />
+            <End Role="tblModuleDetail" EntitySet="tblModuleDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblModuleTopics_tblModules" Association="Self.FK_tblModuleTopics_tblModules">
+            <End Role="tblModules" EntitySet="tblModules" />
+            <End Role="tblModuleTopics" EntitySet="tblModuleTopics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblModuleTopics_tblTopic" Association="Self.FK_tblModuleTopics_tblTopic">
+            <End Role="tblTopic" EntitySet="tblTopic" />
+            <End Role="tblModuleTopics" EntitySet="tblModuleTopics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPackageModuleCount_tblPackages" Association="Self.FK_tblPackageModuleCount_tblPackages">
+            <End Role="tblPackages" EntitySet="tblPackages" />
+            <End Role="tblPackageModuleCount" EntitySet="tblPackageModuleCount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuestionAnswers_tblQuestions" Association="Self.FK_tblQuestionAnswers_tblQuestions">
+            <End Role="tblQuestions" EntitySet="tblQuestions" />
+            <End Role="tblQuestionAnswers" EntitySet="tblQuestionAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuestionChoices_tblQuestions" Association="Self.FK_tblQuestionChoices_tblQuestions">
+            <End Role="tblQuestions" EntitySet="tblQuestions" />
+            <End Role="tblQuestionChoices" EntitySet="tblQuestionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuizProgress_tblQuizes" Association="Self.FK_tblQuizProgress_tblQuizes">
+            <End Role="tblQuizes" EntitySet="tblQuizes" />
+            <End Role="tblQuizProgress" EntitySet="tblQuizProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuizProgress_tblUser" Association="Self.FK_tblQuizProgress_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblQuizProgress" EntitySet="tblQuizProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuizQuestions_tblQuestions" Association="Self.FK_tblQuizQuestions_tblQuestions">
+            <End Role="tblQuestions" EntitySet="tblQuestions" />
+            <End Role="tblQuizQuestions" EntitySet="tblQuizQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuizQuestions_tblQuizes" Association="Self.FK_tblQuizQuestions_tblQuizes">
+            <End Role="tblQuizes" EntitySet="tblQuizes" />
+            <End Role="tblQuizQuestions" EntitySet="tblQuizQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTopicFeedBack_tblTopic" Association="Self.FK_tblTopicFeedBack_tblTopic">
+            <End Role="tblTopic" EntitySet="tblTopic" />
+            <End Role="tblTopicFeedBack" EntitySet="tblTopicFeedBack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTopicUnitsQuizes_tblQuizes" Association="Self.FK_tblTopicUnitsQuizes_tblQuizes">
+            <End Role="tblQuizes" EntitySet="tblQuizes" />
+            <End Role="tblTopicUnitsQuizes" EntitySet="tblTopicUnitsQuizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTopicUnitsQuizes_tblTopic" Association="Self.FK_tblTopicUnitsQuizes_tblTopic">
+            <End Role="tblTopic" EntitySet="tblTopic" />
+            <End Role="tblTopicUnitsQuizes" EntitySet="tblTopicUnitsQuizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTopicUnitsQuizes_tblUnits" Association="Self.FK_tblTopicUnitsQuizes_tblUnits">
+            <End Role="tblUnits" EntitySet="tblUnits" />
+            <End Role="tblTopicUnitsQuizes" EntitySet="tblTopicUnitsQuizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUnitsProgress_tblUnits" Association="Self.FK_tblUnitsProgress_tblUnits">
+            <End Role="tblUnits" EntitySet="tblUnits" />
+            <End Role="tblUnitsProgress" EntitySet="tblUnitsProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUnitsProgress_tblUser" Association="Self.FK_tblUnitsProgress_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUnitsProgress" EntitySet="tblUnitsProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblRole" Association="Self.FK_tblUser_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblUser" EntitySet="tblUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserCoursePurchase_tblCoursePackages" Association="Self.FK_tblUserCoursePurchase_tblCoursePackages">
+            <End Role="tblCoursePackages" EntitySet="tblCoursePackages" />
+            <End Role="tblUserCoursePurchase" EntitySet="tblUserCoursePurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserCoursePurchase_tblUser" Association="Self.FK_tblUserCoursePurchase_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserCoursePurchase" EntitySet="tblUserCoursePurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserModuleSubscription_tblCourse" Association="Self.FK_tblUserModuleSubscription_tblCourse">
+            <End Role="tblCourse" EntitySet="tblCourse" />
+            <End Role="tblUserModuleSubscription" EntitySet="tblUserModuleSubscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserModuleSubscription_tblModules" Association="Self.FK_tblUserModuleSubscription_tblModules">
+            <End Role="tblModules" EntitySet="tblModules" />
+            <End Role="tblUserModuleSubscription" EntitySet="tblUserModuleSubscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserModuleSubscription_tblUser" Association="Self.FK_tblUserModuleSubscription_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserModuleSubscription" EntitySet="tblUserModuleSubscription" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBBemrcogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblChat">
+          <Key>
+            <PropertyRef Name="CHAT_ID" />
+          </Key>
+          <Property Name="CHAT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CHAT_USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="CONNECTION_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SESSION_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEXT" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SCROLEPOSITION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PLATFORM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LANGUAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BROWSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRTD_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsVisibleToUser" Type="Boolean" Nullable="false" />
+          <Property Name="isAdmin" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblChatOLD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADMIN_ID" Type="Int32" Nullable="false" />
+          <Property Name="isAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="CHAT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRTD_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CONNECTION_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SCROLEPOSITION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PLATFORM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LANGUAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BROWSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblChatRole">
+          <Key>
+            <PropertyRef Name="CHAT_ROLE_ID" />
+          </Key>
+          <Property Name="CHAT_ROLE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" Nullable="false" />
+          <Property Name="UPDT_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblChatUser">
+          <Key>
+            <PropertyRef Name="CHAT_USER_ID" />
+          </Key>
+          <Property Name="CHAT_USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CHAT_USERNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CHAT_USER_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CHAT_USER_IMAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CHAT_USER_PASSWORD" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CHAT_ROLE_ID" Type="Int32" Nullable="false" />
+          <Property Name="CHAT_STATUS_ID" Type="Int32" Nullable="false" />
+          <Property Name="CONNECTION_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsEmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" Nullable="false" />
+          <Property Name="UPDT_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActiveChat" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCourse">
+          <Key>
+            <PropertyRef Name="COURSE_ID" />
+          </Key>
+          <Property Name="COURSE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COURSE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COURSE_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="COURSE_START_DATE" Type="DateTime" Precision="3" />
+          <Property Name="COURSE_END_DATE" Type="DateTime" Precision="3" />
+          <Property Name="COURSE_TYPE_ID" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCourseType" Relationship="Self.FK_tblCourse_tblCourseType" FromRole="tblCourse" ToRole="tblCourseType" />
+          <NavigationProperty Name="tblCourseDetails" Relationship="Self.FK_tblCourseDetail_tblCourse" FromRole="tblCourse" ToRole="tblCourseDetail" />
+          <NavigationProperty Name="tblCourseModules" Relationship="Self.FK_tblCourseModules_tblCourse" FromRole="tblCourse" ToRole="tblCourseModules" />
+          <NavigationProperty Name="tblCoursePackages" Relationship="Self.FK_tblCoursePackages_tblCourse" FromRole="tblCourse" ToRole="tblCoursePackages" />
+          <NavigationProperty Name="tblUserModuleSubscriptions" Relationship="Self.FK_tblUserModuleSubscription_tblCourse" FromRole="tblCourse" ToRole="tblUserModuleSubscription" />
+        </EntityType>
+        <EntityType Name="tblCourseDetail">
+          <Key>
+            <PropertyRef Name="COURSE_DETAIL_ID" />
+          </Key>
+          <Property Name="COURSE_DETAIL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COURSE_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="COURSE_ID" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCourse" Relationship="Self.FK_tblCourseDetail_tblCourse" FromRole="tblCourseDetail" ToRole="tblCourse" />
+        </EntityType>
+        <EntityType Name="tblCourseModule">
+          <Key>
+            <PropertyRef Name="COURSE_MODULE_ID" />
+          </Key>
+          <Property Name="COURSE_MODULE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COURSE_ID" Type="Int32" />
+          <Property Name="MODULE_ID" Type="Int32" />
+          <Property Name="COURSE_MODULE_SORTORDER" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCourse" Relationship="Self.FK_tblCourseModules_tblCourse" FromRole="tblCourseModules" ToRole="tblCourse" />
+          <NavigationProperty Name="tblModule" Relationship="Self.FK_tblCourseModules_tblModules" FromRole="tblCourseModules" ToRole="tblModules" />
+        </EntityType>
+        <EntityType Name="tblCoursePackage">
+          <Key>
+            <PropertyRef Name="COURSE_PACKAGE_ID" />
+          </Key>
+          <Property Name="COURSE_PACKAGE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COURSE_ID" Type="Int32" Nullable="false" />
+          <Property Name="PACKAGE_ID" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCourse" Relationship="Self.FK_tblCoursePackages_tblCourse" FromRole="tblCoursePackages" ToRole="tblCourse" />
+          <NavigationProperty Name="tblPackage" Relationship="Self.FK_tblCoursePackages_tblPackages" FromRole="tblCoursePackages" ToRole="tblPackages" />
+          <NavigationProperty Name="tblUserCoursePurchases" Relationship="Self.FK_tblUserCoursePurchase_tblCoursePackages" FromRole="tblCoursePackages" ToRole="tblUserCoursePurchase" />
+        </EntityType>
+        <EntityType Name="tblCourseType">
+          <Key>
+            <PropertyRef Name="COURSE_TYPE_ID" />
+          </Key>
+          <Property Name="COURSE_TYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COURSE_TYPE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCourses" Relationship="Self.FK_tblCourse_tblCourseType" FromRole="tblCourseType" ToRole="tblCourse" />
+        </EntityType>
+        <EntityType Name="tblEvent">
+          <Key>
+            <PropertyRef Name="EVENT_ID" />
+          </Key>
+          <Property Name="EVENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HEADING" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EVENT_IMAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="START_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="END_DATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SHORT_DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRTD_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CRTD_BY" Type="Int32" Nullable="false" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblModuleDetail">
+          <Key>
+            <PropertyRef Name="MODULE_DETAIL_ID" />
+          </Key>
+          <Property Name="MODULE_DETAIL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MODULE_ID" Type="Int32" />
+          <Property Name="MODULE_DETAIL_DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblModule" Relationship="Self.FK_tblModuleDetail_tblModules" FromRole="tblModuleDetail" ToRole="tblModules" />
+        </EntityType>
+        <EntityType Name="tblModule">
+          <Key>
+            <PropertyRef Name="MODULE_ID" />
+          </Key>
+          <Property Name="MODULE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MODULE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCourseModules" Relationship="Self.FK_tblCourseModules_tblModules" FromRole="tblModules" ToRole="tblCourseModules" />
+          <NavigationProperty Name="tblModuleDetails" Relationship="Self.FK_tblModuleDetail_tblModules" FromRole="tblModules" ToRole="tblModuleDetail" />
+          <NavigationProperty Name="tblModuleTopics" Relationship="Self.FK_tblModuleTopics_tblModules" FromRole="tblModules" ToRole="tblModuleTopics" />
+          <NavigationProperty Name="tblUserModuleSubscriptions" Relationship="Self.FK_tblUserModuleSubscription_tblModules" FromRole="tblModules" ToRole="tblUserModuleSubscription" />
+        </EntityType>
+        <EntityType Name="tblModuleTopic">
+          <Key>
+            <PropertyRef Name="MODULE_TOPIC_ID" />
+          </Key>
+          <Property Name="MODULE_TOPIC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MODULE_ID" Type="Int32" />
+          <Property Name="TOPIC_ID" Type="Int32" />
+          <Property Name="MODULE_TOPIC_SORTORDER" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblModule" Relationship="Self.FK_tblModuleTopics_tblModules" FromRole="tblModuleTopics" ToRole="tblModules" />
+          <NavigationProperty Name="tblTopic" Relationship="Self.FK_tblModuleTopics_tblTopic" FromRole="tblModuleTopics" ToRole="tblTopic" />
+        </EntityType>
+        <EntityType Name="tblPackageModuleCount">
+          <Key>
+            <PropertyRef Name="PACKAGE_MODULE_COUNT_ID" />
+          </Key>
+          <Property Name="PACKAGE_MODULE_COUNT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PACKAGE_ID" Type="Int32" Nullable="false" />
+          <Property Name="MODULE_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblPackage" Relationship="Self.FK_tblPackageModuleCount_tblPackages" FromRole="tblPackageModuleCount" ToRole="tblPackages" />
+        </EntityType>
+        <EntityType Name="tblPackage">
+          <Key>
+            <PropertyRef Name="PACKAGE_ID" />
+          </Key>
+          <Property Name="PACKAGE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PACKAGE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PACKAGE_PRICE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCoursePackages" Relationship="Self.FK_tblCoursePackages_tblPackages" FromRole="tblPackages" ToRole="tblCoursePackages" />
+          <NavigationProperty Name="tblPackageModuleCounts" Relationship="Self.FK_tblPackageModuleCount_tblPackages" FromRole="tblPackages" ToRole="tblPackageModuleCount" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IMAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DETAIL" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STRIKE_PRICE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblQuestionAnswer">
+          <Key>
+            <PropertyRef Name="QUESTION_ANSWER_ID" />
+          </Key>
+          <Property Name="QUESTION_ANSWER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QUESTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="CORRECT_ANSWER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblQuestion" Relationship="Self.FK_tblQuestionAnswers_tblQuestions" FromRole="tblQuestionAnswers" ToRole="tblQuestions" />
+        </EntityType>
+        <EntityType Name="tblQuestionChoice">
+          <Key>
+            <PropertyRef Name="QUESTION_CHOICE_ID" />
+          </Key>
+          <Property Name="QUESTION_CHOICE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QUESTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="CHOICE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblQuestion" Relationship="Self.FK_tblQuestionChoices_tblQuestions" FromRole="tblQuestionChoices" ToRole="tblQuestions" />
+        </EntityType>
+        <EntityType Name="tblQuestion">
+          <Key>
+            <PropertyRef Name="QUESTION_ID" />
+          </Key>
+          <Property Name="QUESTION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QUESTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblQuestionAnswers" Relationship="Self.FK_tblQuestionAnswers_tblQuestions" FromRole="tblQuestions" ToRole="tblQuestionAnswers" />
+          <NavigationProperty Name="tblQuestionChoices" Relationship="Self.FK_tblQuestionChoices_tblQuestions" FromRole="tblQuestions" ToRole="tblQuestionChoices" />
+          <NavigationProperty Name="tblQuizQuestions" Relationship="Self.FK_tblQuizQuestions_tblQuestions" FromRole="tblQuestions" ToRole="tblQuizQuestions" />
+        </EntityType>
+        <EntityType Name="tblQuize">
+          <Key>
+            <PropertyRef Name="QUIZ_ID" />
+          </Key>
+          <Property Name="QUIZ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QUIZ_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QUIZ_TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblQuizProgresses" Relationship="Self.FK_tblQuizProgress_tblQuizes" FromRole="tblQuizes" ToRole="tblQuizProgress" />
+          <NavigationProperty Name="tblQuizQuestions" Relationship="Self.FK_tblQuizQuestions_tblQuizes" FromRole="tblQuizes" ToRole="tblQuizQuestions" />
+          <NavigationProperty Name="tblTopicUnitsQuizes" Relationship="Self.FK_tblTopicUnitsQuizes_tblQuizes" FromRole="tblQuizes" ToRole="tblTopicUnitsQuizes" />
+        </EntityType>
+        <EntityType Name="tblQuizProgress">
+          <Key>
+            <PropertyRef Name="QUIZ_PROGRESS_ID" />
+          </Key>
+          <Property Name="QUIZ_PROGRESS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUIZ_ID" Type="Int32" Nullable="false" />
+          <Property Name="TIME_SPENT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QUIZ_RESULT" Type="Int32" Nullable="false" />
+          <Property Name="QUIZ_ATTEMPT" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblQuize" Relationship="Self.FK_tblQuizProgress_tblQuizes" FromRole="tblQuizProgress" ToRole="tblQuizes" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblQuizProgress_tblUser" FromRole="tblQuizProgress" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblQuizQuestion">
+          <Key>
+            <PropertyRef Name="QUIZ_QUESTION_ID" />
+          </Key>
+          <Property Name="QUIZ_QUESTION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QUIZ_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUESTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="SORTORDER" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblQuestion" Relationship="Self.FK_tblQuizQuestions_tblQuestions" FromRole="tblQuizQuestions" ToRole="tblQuestions" />
+          <NavigationProperty Name="tblQuize" Relationship="Self.FK_tblQuizQuestions_tblQuizes" FromRole="tblQuizQuestions" ToRole="tblQuizes" />
+        </EntityType>
+        <EntityType Name="tblReview">
+          <Key>
+            <PropertyRef Name="REVIEW_ID" />
+          </Key>
+          <Property Name="REVIEW_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REVIEW_HEADING" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="REVIEW_DESCRIPTION" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="STUDENT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STUDENT_TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STUDENT_IMAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROLE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblUsers" Relationship="Self.FK_tblUser_tblRole" FromRole="tblRole" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblSlider">
+          <Key>
+            <PropertyRef Name="SLIDER_ID" />
+          </Key>
+          <Property Name="SLIDER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IMAGE_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION_1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION_2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION_3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION_4" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BG_COLOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTopic">
+          <Key>
+            <PropertyRef Name="TOPIC_ID" />
+          </Key>
+          <Property Name="TOPIC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TOPIC_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblModuleTopics" Relationship="Self.FK_tblModuleTopics_tblTopic" FromRole="tblTopic" ToRole="tblModuleTopics" />
+          <NavigationProperty Name="tblTopicFeedBacks" Relationship="Self.FK_tblTopicFeedBack_tblTopic" FromRole="tblTopic" ToRole="tblTopicFeedBack" />
+          <NavigationProperty Name="tblTopicUnitsQuizes" Relationship="Self.FK_tblTopicUnitsQuizes_tblTopic" FromRole="tblTopic" ToRole="tblTopicUnitsQuizes" />
+        </EntityType>
+        <EntityType Name="tblTopicFeedBack">
+          <Key>
+            <PropertyRef Name="TOPIC_FEEDBACK_ID" />
+          </Key>
+          <Property Name="TOPIC_FEEDBACK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TOPIC_ID" Type="Int32" Nullable="false" />
+          <Property Name="FEEDBACK_ID" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblTopic" Relationship="Self.FK_tblTopicFeedBack_tblTopic" FromRole="tblTopicFeedBack" ToRole="tblTopic" />
+        </EntityType>
+        <EntityType Name="tblTopicUnitsQuize">
+          <Key>
+            <PropertyRef Name="TOPIC_UNITS_QUIZES_ID" />
+          </Key>
+          <Property Name="TOPIC_UNITS_QUIZES_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TOPIC_ID" Type="Int32" Nullable="false" />
+          <Property Name="UNIT_ID" Type="Int32" />
+          <Property Name="QUIZ_ID" Type="Int32" />
+          <Property Name="TOPIC_UNITS_SORTORDER" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblQuize" Relationship="Self.FK_tblTopicUnitsQuizes_tblQuizes" FromRole="tblTopicUnitsQuizes" ToRole="tblQuizes" />
+          <NavigationProperty Name="tblTopic" Relationship="Self.FK_tblTopicUnitsQuizes_tblTopic" FromRole="tblTopicUnitsQuizes" ToRole="tblTopic" />
+          <NavigationProperty Name="tblUnit" Relationship="Self.FK_tblTopicUnitsQuizes_tblUnits" FromRole="tblTopicUnitsQuizes" ToRole="tblUnits" />
+        </EntityType>
+        <EntityType Name="tblUnit">
+          <Key>
+            <PropertyRef Name="UNIT_ID" />
+          </Key>
+          <Property Name="UNIT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UNIT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AUDIO_LINK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PDF_LINK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VIDEO_LINK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblTopicUnitsQuizes" Relationship="Self.FK_tblTopicUnitsQuizes_tblUnits" FromRole="tblUnits" ToRole="tblTopicUnitsQuizes" />
+          <NavigationProperty Name="tblUnitsProgresses" Relationship="Self.FK_tblUnitsProgress_tblUnits" FromRole="tblUnits" ToRole="tblUnitsProgress" />
+        </EntityType>
+        <EntityType Name="tblUnitsProgress">
+          <Key>
+            <PropertyRef Name="UNIT_PROGRESS_ID" />
+          </Key>
+          <Property Name="UNIT_PROGRESS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="UNIT_ID" Type="Int32" Nullable="false" />
+          <Property Name="TIME_SPENT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UNITS_STATUS" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblUnit" Relationship="Self.FK_tblUnitsProgress_tblUnits" FromRole="tblUnitsProgress" ToRole="tblUnits" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUnitsProgress_tblUser" FromRole="tblUnitsProgress" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USER_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USER_IMAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USER_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ROLE_ID" Type="Int32" Nullable="false" />
+          <Property Name="STATUS" Type="Int32" Nullable="false" />
+          <Property Name="CONNECTED_PARENT" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RECONNECTED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CONNECTION_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblQuizProgresses" Relationship="Self.FK_tblQuizProgress_tblUser" FromRole="tblUser" ToRole="tblQuizProgress" />
+          <NavigationProperty Name="tblRole" Relationship="Self.FK_tblUser_tblRole" FromRole="tblUser" ToRole="tblRole" />
+          <NavigationProperty Name="tblUnitsProgresses" Relationship="Self.FK_tblUnitsProgress_tblUser" FromRole="tblUser" ToRole="tblUnitsProgress" />
+          <NavigationProperty Name="tblUserCoursePurchases" Relationship="Self.FK_tblUserCoursePurchase_tblUser" FromRole="tblUser" ToRole="tblUserCoursePurchase" />
+          <NavigationProperty Name="tblUserModuleSubscriptions" Relationship="Self.FK_tblUserModuleSubscription_tblUser" FromRole="tblUser" ToRole="tblUserModuleSubscription" />
+        </EntityType>
+        <EntityType Name="tblUserCoursePurchase">
+          <Key>
+            <PropertyRef Name="USER_COURSE_PURCHASE_ID" />
+          </Key>
+          <Property Name="USER_COURSE_PURCHASE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COURSE_PACKAGE_ID" Type="Int32" Nullable="false" />
+          <Property Name="USER_ID" Type="Int32" />
+          <Property Name="COURSE_PACKAGE_PRICE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCoursePackage" Relationship="Self.FK_tblUserCoursePurchase_tblCoursePackages" FromRole="tblUserCoursePurchase" ToRole="tblCoursePackages" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserCoursePurchase_tblUser" FromRole="tblUserCoursePurchase" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUserModuleSubscription">
+          <Key>
+            <PropertyRef Name="USER_MODULE_SUBSCRIPTION_ID" />
+          </Key>
+          <Property Name="USER_MODULE_SUBSCRIPTION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="COURSE_ID" Type="Int32" Nullable="false" />
+          <Property Name="MODULE_ID" Type="Int32" Nullable="false" />
+          <Property Name="CRTD_BY" Type="Int32" />
+          <Property Name="CRTD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDT_BY" Type="Int32" />
+          <Property Name="UPDT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCourse" Relationship="Self.FK_tblUserModuleSubscription_tblCourse" FromRole="tblUserModuleSubscription" ToRole="tblCourse" />
+          <NavigationProperty Name="tblModule" Relationship="Self.FK_tblUserModuleSubscription_tblModules" FromRole="tblUserModuleSubscription" ToRole="tblModules" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserModuleSubscription_tblUser" FromRole="tblUserModuleSubscription" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_tblCourse_tblCourseType">
+          <End Role="tblCourseType" Type="Self.tblCourseType" Multiplicity="0..1" />
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourseType">
+              <PropertyRef Name="COURSE_TYPE_ID" />
+            </Principal>
+            <Dependent Role="tblCourse">
+              <PropertyRef Name="COURSE_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourseDetail_tblCourse">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="0..1" />
+          <End Role="tblCourseDetail" Type="Self.tblCourseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="tblCourseDetail">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourseModules_tblCourse">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="0..1" />
+          <End Role="tblCourseModules" Type="Self.tblCourseModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="tblCourseModules">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoursePackages_tblCourse">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="1" />
+          <End Role="tblCoursePackages" Type="Self.tblCoursePackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="tblCoursePackages">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserModuleSubscription_tblCourse">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="1" />
+          <End Role="tblUserModuleSubscription" Type="Self.tblUserModuleSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="tblUserModuleSubscription">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourseModules_tblModules">
+          <End Role="tblModules" Type="Self.tblModule" Multiplicity="0..1" />
+          <End Role="tblCourseModules" Type="Self.tblCourseModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblModules">
+              <PropertyRef Name="MODULE_ID" />
+            </Principal>
+            <Dependent Role="tblCourseModules">
+              <PropertyRef Name="MODULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoursePackages_tblPackages">
+          <End Role="tblPackages" Type="Self.tblPackage" Multiplicity="1" />
+          <End Role="tblCoursePackages" Type="Self.tblCoursePackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPackages">
+              <PropertyRef Name="PACKAGE_ID" />
+            </Principal>
+            <Dependent Role="tblCoursePackages">
+              <PropertyRef Name="PACKAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserCoursePurchase_tblCoursePackages">
+          <End Role="tblCoursePackages" Type="Self.tblCoursePackage" Multiplicity="1" />
+          <End Role="tblUserCoursePurchase" Type="Self.tblUserCoursePurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoursePackages">
+              <PropertyRef Name="COURSE_PACKAGE_ID" />
+            </Principal>
+            <Dependent Role="tblUserCoursePurchase">
+              <PropertyRef Name="COURSE_PACKAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblModuleDetail_tblModules">
+          <End Role="tblModules" Type="Self.tblModule" Multiplicity="0..1" />
+          <End Role="tblModuleDetail" Type="Self.tblModuleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblModules">
+              <PropertyRef Name="MODULE_ID" />
+            </Principal>
+            <Dependent Role="tblModuleDetail">
+              <PropertyRef Name="MODULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblModuleTopics_tblModules">
+          <End Role="tblModules" Type="Self.tblModule" Multiplicity="0..1" />
+          <End Role="tblModuleTopics" Type="Self.tblModuleTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblModules">
+              <PropertyRef Name="MODULE_ID" />
+            </Principal>
+            <Dependent Role="tblModuleTopics">
+              <PropertyRef Name="MODULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserModuleSubscription_tblModules">
+          <End Role="tblModules" Type="Self.tblModule" Multiplicity="1" />
+          <End Role="tblUserModuleSubscription" Type="Self.tblUserModuleSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblModules">
+              <PropertyRef Name="MODULE_ID" />
+            </Principal>
+            <Dependent Role="tblUserModuleSubscription">
+              <PropertyRef Name="MODULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblModuleTopics_tblTopic">
+          <End Role="tblTopic" Type="Self.tblTopic" Multiplicity="0..1" />
+          <End Role="tblModuleTopics" Type="Self.tblModuleTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTopic">
+              <PropertyRef Name="TOPIC_ID" />
+            </Principal>
+            <Dependent Role="tblModuleTopics">
+              <PropertyRef Name="TOPIC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPackageModuleCount_tblPackages">
+          <End Role="tblPackages" Type="Self.tblPackage" Multiplicity="1" />
+          <End Role="tblPackageModuleCount" Type="Self.tblPackageModuleCount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPackages">
+              <PropertyRef Name="PACKAGE_ID" />
+            </Principal>
+            <Dependent Role="tblPackageModuleCount">
+              <PropertyRef Name="PACKAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuestionAnswers_tblQuestions">
+          <End Role="tblQuestions" Type="Self.tblQuestion" Multiplicity="1" />
+          <End Role="tblQuestionAnswers" Type="Self.tblQuestionAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuestions">
+              <PropertyRef Name="QUESTION_ID" />
+            </Principal>
+            <Dependent Role="tblQuestionAnswers">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuestionChoices_tblQuestions">
+          <End Role="tblQuestions" Type="Self.tblQuestion" Multiplicity="1" />
+          <End Role="tblQuestionChoices" Type="Self.tblQuestionChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuestions">
+              <PropertyRef Name="QUESTION_ID" />
+            </Principal>
+            <Dependent Role="tblQuestionChoices">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuizQuestions_tblQuestions">
+          <End Role="tblQuestions" Type="Self.tblQuestion" Multiplicity="1" />
+          <End Role="tblQuizQuestions" Type="Self.tblQuizQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuestions">
+              <PropertyRef Name="QUESTION_ID" />
+            </Principal>
+            <Dependent Role="tblQuizQuestions">
+              <PropertyRef Name="QUESTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuizProgress_tblQuizes">
+          <End Role="tblQuizes" Type="Self.tblQuize" Multiplicity="1" />
+          <End Role="tblQuizProgress" Type="Self.tblQuizProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuizes">
+              <PropertyRef Name="QUIZ_ID" />
+            </Principal>
+            <Dependent Role="tblQuizProgress">
+              <PropertyRef Name="QUIZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuizQuestions_tblQuizes">
+          <End Role="tblQuizes" Type="Self.tblQuize" Multiplicity="1" />
+          <End Role="tblQuizQuestions" Type="Self.tblQuizQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuizes">
+              <PropertyRef Name="QUIZ_ID" />
+            </Principal>
+            <Dependent Role="tblQuizQuestions">
+              <PropertyRef Name="QUIZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTopicUnitsQuizes_tblQuizes">
+          <End Role="tblQuizes" Type="Self.tblQuize" Multiplicity="0..1" />
+          <End Role="tblTopicUnitsQuizes" Type="Self.tblTopicUnitsQuize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuizes">
+              <PropertyRef Name="QUIZ_ID" />
+            </Principal>
+            <Dependent Role="tblTopicUnitsQuizes">
+              <PropertyRef Name="QUIZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblQuizProgress_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblQuizProgress" Type="Self.tblQuizProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="tblQuizProgress">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUser_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="1" />
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="tblUser">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTopicFeedBack_tblTopic">
+          <End Role="tblTopic" Type="Self.tblTopic" Multiplicity="1" />
+          <End Role="tblTopicFeedBack" Type="Self.tblTopicFeedBack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTopic">
+              <PropertyRef Name="TOPIC_ID" />
+            </Principal>
+            <Dependent Role="tblTopicFeedBack">
+              <PropertyRef Name="TOPIC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTopicUnitsQuizes_tblTopic">
+          <End Role="tblTopic" Type="Self.tblTopic" Multiplicity="1" />
+          <End Role="tblTopicUnitsQuizes" Type="Self.tblTopicUnitsQuize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTopic">
+              <PropertyRef Name="TOPIC_ID" />
+            </Principal>
+            <Dependent Role="tblTopicUnitsQuizes">
+              <PropertyRef Name="TOPIC_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTopicUnitsQuizes_tblUnits">
+          <End Role="tblUnits" Type="Self.tblUnit" Multiplicity="0..1" />
+          <End Role="tblTopicUnitsQuizes" Type="Self.tblTopicUnitsQuize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUnits">
+              <PropertyRef Name="UNIT_ID" />
+            </Principal>
+            <Dependent Role="tblTopicUnitsQuizes">
+              <PropertyRef Name="UNIT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUnitsProgress_tblUnits">
+          <End Role="tblUnits" Type="Self.tblUnit" Multiplicity="1" />
+          <End Role="tblUnitsProgress" Type="Self.tblUnitsProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUnits">
+              <PropertyRef Name="UNIT_ID" />
+            </Principal>
+            <Dependent Role="tblUnitsProgress">
+              <PropertyRef Name="UNIT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUnitsProgress_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUnitsProgress" Type="Self.tblUnitsProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="tblUnitsProgress">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserCoursePurchase_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblUserCoursePurchase" Type="Self.tblUserCoursePurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="tblUserCoursePurchase">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserModuleSubscription_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUserModuleSubscription" Type="Self.tblUserModuleSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="tblUserModuleSubscription">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBemrcogEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblChats" EntityType="Self.tblChat" />
+          <EntitySet Name="tblChatOLDs" EntityType="Self.tblChatOLD" />
+          <EntitySet Name="tblChatRoles" EntityType="Self.tblChatRole" />
+          <EntitySet Name="tblChatUsers" EntityType="Self.tblChatUser" />
+          <EntitySet Name="tblCourses" EntityType="Self.tblCourse" />
+          <EntitySet Name="tblCourseDetails" EntityType="Self.tblCourseDetail" />
+          <EntitySet Name="tblCourseModules" EntityType="Self.tblCourseModule" />
+          <EntitySet Name="tblCoursePackages" EntityType="Self.tblCoursePackage" />
+          <EntitySet Name="tblCourseTypes" EntityType="Self.tblCourseType" />
+          <EntitySet Name="tblEvents" EntityType="Self.tblEvent" />
+          <EntitySet Name="tblModuleDetails" EntityType="Self.tblModuleDetail" />
+          <EntitySet Name="tblModules" EntityType="Self.tblModule" />
+          <EntitySet Name="tblModuleTopics" EntityType="Self.tblModuleTopic" />
+          <EntitySet Name="tblPackageModuleCounts" EntityType="Self.tblPackageModuleCount" />
+          <EntitySet Name="tblPackages" EntityType="Self.tblPackage" />
+          <EntitySet Name="tblProducts" EntityType="Self.tblProduct" />
+          <EntitySet Name="tblQuestionAnswers" EntityType="Self.tblQuestionAnswer" />
+          <EntitySet Name="tblQuestionChoices" EntityType="Self.tblQuestionChoice" />
+          <EntitySet Name="tblQuestions" EntityType="Self.tblQuestion" />
+          <EntitySet Name="tblQuizes" EntityType="Self.tblQuize" />
+          <EntitySet Name="tblQuizProgresses" EntityType="Self.tblQuizProgress" />
+          <EntitySet Name="tblQuizQuestions" EntityType="Self.tblQuizQuestion" />
+          <EntitySet Name="tblReviews" EntityType="Self.tblReview" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
+          <EntitySet Name="tblSliders" EntityType="Self.tblSlider" />
+          <EntitySet Name="tblTopics" EntityType="Self.tblTopic" />
+          <EntitySet Name="tblTopicFeedBacks" EntityType="Self.tblTopicFeedBack" />
+          <EntitySet Name="tblTopicUnitsQuizes" EntityType="Self.tblTopicUnitsQuize" />
+          <EntitySet Name="tblUnits" EntityType="Self.tblUnit" />
+          <EntitySet Name="tblUnitsProgresses" EntityType="Self.tblUnitsProgress" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblUserCoursePurchases" EntityType="Self.tblUserCoursePurchase" />
+          <EntitySet Name="tblUserModuleSubscriptions" EntityType="Self.tblUserModuleSubscription" />
+          <AssociationSet Name="FK_tblCourse_tblCourseType" Association="Self.FK_tblCourse_tblCourseType">
+            <End Role="tblCourseType" EntitySet="tblCourseTypes" />
+            <End Role="tblCourse" EntitySet="tblCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourseDetail_tblCourse" Association="Self.FK_tblCourseDetail_tblCourse">
+            <End Role="tblCourse" EntitySet="tblCourses" />
+            <End Role="tblCourseDetail" EntitySet="tblCourseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourseModules_tblCourse" Association="Self.FK_tblCourseModules_tblCourse">
+            <End Role="tblCourse" EntitySet="tblCourses" />
+            <End Role="tblCourseModules" EntitySet="tblCourseModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoursePackages_tblCourse" Association="Self.FK_tblCoursePackages_tblCourse">
+            <End Role="tblCourse" EntitySet="tblCourses" />
+            <End Role="tblCoursePackages" EntitySet="tblCoursePackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserModuleSubscription_tblCourse" Association="Self.FK_tblUserModuleSubscription_tblCourse">
+            <End Role="tblCourse" EntitySet="tblCourses" />
+            <End Role="tblUserModuleSubscription" EntitySet="tblUserModuleSubscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourseModules_tblModules" Association="Self.FK_tblCourseModules_tblModules">
+            <End Role="tblModules" EntitySet="tblModules" />
+            <End Role="tblCourseModules" EntitySet="tblCourseModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoursePackages_tblPackages" Association="Self.FK_tblCoursePackages_tblPackages">
+            <End Role="tblPackages" EntitySet="tblPackages" />
+            <End Role="tblCoursePackages" EntitySet="tblCoursePackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserCoursePurchase_tblCoursePackages" Association="Self.FK_tblUserCoursePurchase_tblCoursePackages">
+            <End Role="tblCoursePackages" EntitySet="tblCoursePackages" />
+            <End Role="tblUserCoursePurchase" EntitySet="tblUserCoursePurchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblModuleDetail_tblModules" Association="Self.FK_tblModuleDetail_tblModules">
+            <End Role="tblModules" EntitySet="tblModules" />
+            <End Role="tblModuleDetail" EntitySet="tblModuleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblModuleTopics_tblModules" Association="Self.FK_tblModuleTopics_tblModules">
+            <End Role="tblModules" EntitySet="tblModules" />
+            <End Role="tblModuleTopics" EntitySet="tblModuleTopics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserModuleSubscription_tblModules" Association="Self.FK_tblUserModuleSubscription_tblModules">
+            <End Role="tblModules" EntitySet="tblModules" />
+            <End Role="tblUserModuleSubscription" EntitySet="tblUserModuleSubscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblModuleTopics_tblTopic" Association="Self.FK_tblModuleTopics_tblTopic">
+            <End Role="tblTopic" EntitySet="tblTopics" />
+            <End Role="tblModuleTopics" EntitySet="tblModuleTopics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPackageModuleCount_tblPackages" Association="Self.FK_tblPackageModuleCount_tblPackages">
+            <End Role="tblPackages" EntitySet="tblPackages" />
+            <End Role="tblPackageModuleCount" EntitySet="tblPackageModuleCounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuestionAnswers_tblQuestions" Association="Self.FK_tblQuestionAnswers_tblQuestions">
+            <End Role="tblQuestions" EntitySet="tblQuestions" />
+            <End Role="tblQuestionAnswers" EntitySet="tblQuestionAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuestionChoices_tblQuestions" Association="Self.FK_tblQuestionChoices_tblQuestions">
+            <End Role="tblQuestions" EntitySet="tblQuestions" />
+            <End Role="tblQuestionChoices" EntitySet="tblQuestionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuizQuestions_tblQuestions" Association="Self.FK_tblQuizQuestions_tblQuestions">
+            <End Role="tblQuestions" EntitySet="tblQuestions" />
+            <End Role="tblQuizQuestions" EntitySet="tblQuizQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuizProgress_tblQuizes" Association="Self.FK_tblQuizProgress_tblQuizes">
+            <End Role="tblQuizes" EntitySet="tblQuizes" />
+            <End Role="tblQuizProgress" EntitySet="tblQuizProgresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuizQuestions_tblQuizes" Association="Self.FK_tblQuizQuestions_tblQuizes">
+            <End Role="tblQuizes" EntitySet="tblQuizes" />
+            <End Role="tblQuizQuestions" EntitySet="tblQuizQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTopicUnitsQuizes_tblQuizes" Association="Self.FK_tblTopicUnitsQuizes_tblQuizes">
+            <End Role="tblQuizes" EntitySet="tblQuizes" />
+            <End Role="tblTopicUnitsQuizes" EntitySet="tblTopicUnitsQuizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblQuizProgress_tblUser" Association="Self.FK_tblQuizProgress_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblQuizProgress" EntitySet="tblQuizProgresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUser_tblRole" Association="Self.FK_tblUser_tblRole">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblUser" EntitySet="tblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTopicFeedBack_tblTopic" Association="Self.FK_tblTopicFeedBack_tblTopic">
+            <End Role="tblTopic" EntitySet="tblTopics" />
+            <End Role="tblTopicFeedBack" EntitySet="tblTopicFeedBacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTopicUnitsQuizes_tblTopic" Association="Self.FK_tblTopicUnitsQuizes_tblTopic">
+            <End Role="tblTopic" EntitySet="tblTopics" />
+            <End Role="tblTopicUnitsQuizes" EntitySet="tblTopicUnitsQuizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTopicUnitsQuizes_tblUnits" Association="Self.FK_tblTopicUnitsQuizes_tblUnits">
+            <End Role="tblUnits" EntitySet="tblUnits" />
+            <End Role="tblTopicUnitsQuizes" EntitySet="tblTopicUnitsQuizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUnitsProgress_tblUnits" Association="Self.FK_tblUnitsProgress_tblUnits">
+            <End Role="tblUnits" EntitySet="tblUnits" />
+            <End Role="tblUnitsProgress" EntitySet="tblUnitsProgresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUnitsProgress_tblUser" Association="Self.FK_tblUnitsProgress_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblUnitsProgress" EntitySet="tblUnitsProgresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserCoursePurchase_tblUser" Association="Self.FK_tblUserCoursePurchase_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblUserCoursePurchase" EntitySet="tblUserCoursePurchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserModuleSubscription_tblUser" Association="Self.FK_tblUserModuleSubscription_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblUserModuleSubscription" EntitySet="tblUserModuleSubscriptions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBBemrcogModelStoreContainer" CdmEntityContainer="DBBemrcogEntities">
+          <EntitySetMapping Name="tblChats">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblChat">
+              <MappingFragment StoreEntitySet="tblChat">
+                <ScalarProperty Name="CHAT_ID" ColumnName="CHAT_ID" />
+                <ScalarProperty Name="CHAT_USER_ID" ColumnName="CHAT_USER_ID" />
+                <ScalarProperty Name="CONNECTION_ID" ColumnName="CONNECTION_ID" />
+                <ScalarProperty Name="SESSION_ID" ColumnName="SESSION_ID" />
+                <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="SCROLEPOSITION" ColumnName="SCROLEPOSITION" />
+                <ScalarProperty Name="PLATFORM" ColumnName="PLATFORM" />
+                <ScalarProperty Name="LANGUAGE" ColumnName="LANGUAGE" />
+                <ScalarProperty Name="BROWSER" ColumnName="BROWSER" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="IsVisibleToUser" ColumnName="IsVisibleToUser" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChatOLDs">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblChatOLD">
+              <MappingFragment StoreEntitySet="tblChatOLD">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="CHAT" ColumnName="CHAT" />
+                <ScalarProperty Name="CRTD_TIME" ColumnName="CRTD_TIME" />
+                <ScalarProperty Name="CONNECTION_ID" ColumnName="CONNECTION_ID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="SCROLEPOSITION" ColumnName="SCROLEPOSITION" />
+                <ScalarProperty Name="PLATFORM" ColumnName="PLATFORM" />
+                <ScalarProperty Name="LANGUAGE" ColumnName="LANGUAGE" />
+                <ScalarProperty Name="BROWSER" ColumnName="BROWSER" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChatRoles">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblChatRole">
+              <MappingFragment StoreEntitySet="tblChatRoles">
+                <ScalarProperty Name="CHAT_ROLE_ID" ColumnName="CHAT_ROLE_ID" />
+                <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChatUsers">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblChatUser">
+              <MappingFragment StoreEntitySet="tblChatUsers">
+                <ScalarProperty Name="CHAT_USER_ID" ColumnName="CHAT_USER_ID" />
+                <ScalarProperty Name="CHAT_USERNAME" ColumnName="CHAT_USERNAME" />
+                <ScalarProperty Name="CHAT_USER_EMAIL" ColumnName="CHAT_USER_EMAIL" />
+                <ScalarProperty Name="CHAT_USER_IMAGE" ColumnName="CHAT_USER_IMAGE" />
+                <ScalarProperty Name="CHAT_USER_PASSWORD" ColumnName="CHAT_USER_PASSWORD" />
+                <ScalarProperty Name="CHAT_ROLE_ID" ColumnName="CHAT_ROLE_ID" />
+                <ScalarProperty Name="CHAT_STATUS_ID" ColumnName="CHAT_STATUS_ID" />
+                <ScalarProperty Name="CONNECTION_ID" ColumnName="CONNECTION_ID" />
+                <ScalarProperty Name="IsEmailConfirmed" ColumnName="IsEmailConfirmed" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActiveChat" ColumnName="IsActiveChat" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCourses">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblCourse">
+              <MappingFragment StoreEntitySet="tblCourse">
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="COURSE_NAME" ColumnName="COURSE_NAME" />
+                <ScalarProperty Name="COURSE_IMAGE" ColumnName="COURSE_IMAGE" />
+                <ScalarProperty Name="COURSE_START_DATE" ColumnName="COURSE_START_DATE" />
+                <ScalarProperty Name="COURSE_END_DATE" ColumnName="COURSE_END_DATE" />
+                <ScalarProperty Name="COURSE_TYPE_ID" ColumnName="COURSE_TYPE_ID" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCourseDetails">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblCourseDetail">
+              <MappingFragment StoreEntitySet="tblCourseDetail">
+                <ScalarProperty Name="COURSE_DETAIL_ID" ColumnName="COURSE_DETAIL_ID" />
+                <ScalarProperty Name="COURSE_DESCRIPTION" ColumnName="COURSE_DESCRIPTION" />
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCourseModules">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblCourseModule">
+              <MappingFragment StoreEntitySet="tblCourseModules">
+                <ScalarProperty Name="COURSE_MODULE_ID" ColumnName="COURSE_MODULE_ID" />
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
+                <ScalarProperty Name="COURSE_MODULE_SORTORDER" ColumnName="COURSE_MODULE_SORTORDER" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCoursePackages">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblCoursePackage">
+              <MappingFragment StoreEntitySet="tblCoursePackages">
+                <ScalarProperty Name="COURSE_PACKAGE_ID" ColumnName="COURSE_PACKAGE_ID" />
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="PACKAGE_ID" ColumnName="PACKAGE_ID" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCourseTypes">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblCourseType">
+              <MappingFragment StoreEntitySet="tblCourseType">
+                <ScalarProperty Name="COURSE_TYPE_ID" ColumnName="COURSE_TYPE_ID" />
+                <ScalarProperty Name="COURSE_TYPE_NAME" ColumnName="COURSE_TYPE_NAME" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEvents">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblEvent">
+              <MappingFragment StoreEntitySet="tblEvents">
+                <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="EVENT_IMAGE" ColumnName="EVENT_IMAGE" />
+                <ScalarProperty Name="START_DATE_TIME" ColumnName="START_DATE_TIME" />
+                <ScalarProperty Name="END_DATE_TIME" ColumnName="END_DATE_TIME" />
+                <ScalarProperty Name="SHORT_DESCRIPTION" ColumnName="SHORT_DESCRIPTION" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblModuleDetails">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblModuleDetail">
+              <MappingFragment StoreEntitySet="tblModuleDetail">
+                <ScalarProperty Name="MODULE_DETAIL_ID" ColumnName="MODULE_DETAIL_ID" />
+                <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
+                <ScalarProperty Name="MODULE_DETAIL_DESCRIPTION" ColumnName="MODULE_DETAIL_DESCRIPTION" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblModules">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblModule">
+              <MappingFragment StoreEntitySet="tblModules">
+                <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
+                <ScalarProperty Name="MODULE_NAME" ColumnName="MODULE_NAME" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblModuleTopics">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblModuleTopic">
+              <MappingFragment StoreEntitySet="tblModuleTopics">
+                <ScalarProperty Name="MODULE_TOPIC_ID" ColumnName="MODULE_TOPIC_ID" />
+                <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
+                <ScalarProperty Name="TOPIC_ID" ColumnName="TOPIC_ID" />
+                <ScalarProperty Name="MODULE_TOPIC_SORTORDER" ColumnName="MODULE_TOPIC_SORTORDER" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPackageModuleCounts">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblPackageModuleCount">
+              <MappingFragment StoreEntitySet="tblPackageModuleCount">
+                <ScalarProperty Name="PACKAGE_MODULE_COUNT_ID" ColumnName="PACKAGE_MODULE_COUNT_ID" />
+                <ScalarProperty Name="PACKAGE_ID" ColumnName="PACKAGE_ID" />
+                <ScalarProperty Name="MODULE_COUNT" ColumnName="MODULE_COUNT" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPackages">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblPackage">
+              <MappingFragment StoreEntitySet="tblPackages">
+                <ScalarProperty Name="PACKAGE_ID" ColumnName="PACKAGE_ID" />
+                <ScalarProperty Name="PACKAGE_NAME" ColumnName="PACKAGE_NAME" />
+                <ScalarProperty Name="PACKAGE_PRICE" ColumnName="PACKAGE_PRICE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProducts">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblProduct">
+              <MappingFragment StoreEntitySet="tblProducts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+                <ScalarProperty Name="STRIKE_PRICE" ColumnName="STRIKE_PRICE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQuestionAnswers">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblQuestionAnswer">
+              <MappingFragment StoreEntitySet="tblQuestionAnswers">
+                <ScalarProperty Name="QUESTION_ANSWER_ID" ColumnName="QUESTION_ANSWER_ID" />
+                <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+                <ScalarProperty Name="CORRECT_ANSWER" ColumnName="CORRECT_ANSWER" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQuestionChoices">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblQuestionChoice">
+              <MappingFragment StoreEntitySet="tblQuestionChoices">
+                <ScalarProperty Name="QUESTION_CHOICE_ID" ColumnName="QUESTION_CHOICE_ID" />
+                <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+                <ScalarProperty Name="CHOICE" ColumnName="CHOICE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQuestions">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblQuestion">
+              <MappingFragment StoreEntitySet="tblQuestions">
+                <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+                <ScalarProperty Name="QUESTION" ColumnName="QUESTION" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQuizes">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblQuize">
+              <MappingFragment StoreEntitySet="tblQuizes">
+                <ScalarProperty Name="QUIZ_ID" ColumnName="QUIZ_ID" />
+                <ScalarProperty Name="QUIZ_NAME" ColumnName="QUIZ_NAME" />
+                <ScalarProperty Name="QUIZ_TYPE_ID" ColumnName="QUIZ_TYPE_ID" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQuizProgresses">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblQuizProgress">
+              <MappingFragment StoreEntitySet="tblQuizProgress">
+                <ScalarProperty Name="QUIZ_PROGRESS_ID" ColumnName="QUIZ_PROGRESS_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="QUIZ_ID" ColumnName="QUIZ_ID" />
+                <ScalarProperty Name="TIME_SPENT" ColumnName="TIME_SPENT" />
+                <ScalarProperty Name="QUIZ_RESULT" ColumnName="QUIZ_RESULT" />
+                <ScalarProperty Name="QUIZ_ATTEMPT" ColumnName="QUIZ_ATTEMPT" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQuizQuestions">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblQuizQuestion">
+              <MappingFragment StoreEntitySet="tblQuizQuestions">
+                <ScalarProperty Name="QUIZ_QUESTION_ID" ColumnName="QUIZ_QUESTION_ID" />
+                <ScalarProperty Name="QUIZ_ID" ColumnName="QUIZ_ID" />
+                <ScalarProperty Name="QUESTION_ID" ColumnName="QUESTION_ID" />
+                <ScalarProperty Name="SORTORDER" ColumnName="SORTORDER" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReviews">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblReview">
+              <MappingFragment StoreEntitySet="tblReviews">
+                <ScalarProperty Name="REVIEW_ID" ColumnName="REVIEW_ID" />
+                <ScalarProperty Name="REVIEW_HEADING" ColumnName="REVIEW_HEADING" />
+                <ScalarProperty Name="REVIEW_DESCRIPTION" ColumnName="REVIEW_DESCRIPTION" />
+                <ScalarProperty Name="STUDENT_NAME" ColumnName="STUDENT_NAME" />
+                <ScalarProperty Name="STUDENT_TITLE" ColumnName="STUDENT_TITLE" />
+                <ScalarProperty Name="STUDENT_IMAGE" ColumnName="STUDENT_IMAGE" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRole">
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSliders">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblSlider">
+              <MappingFragment StoreEntitySet="tblSlider">
+                <ScalarProperty Name="SLIDER_ID" ColumnName="SLIDER_ID" />
+                <ScalarProperty Name="IMAGE_URL" ColumnName="IMAGE_URL" />
+                <ScalarProperty Name="DESCRIPTION_1" ColumnName="DESCRIPTION_1" />
+                <ScalarProperty Name="DESCRIPTION_2" ColumnName="DESCRIPTION_2" />
+                <ScalarProperty Name="DESCRIPTION_3" ColumnName="DESCRIPTION_3" />
+                <ScalarProperty Name="DESCRIPTION_4" ColumnName="DESCRIPTION_4" />
+                <ScalarProperty Name="BG_COLOR" ColumnName="BG_COLOR" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTopics">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblTopic">
+              <MappingFragment StoreEntitySet="tblTopic">
+                <ScalarProperty Name="TOPIC_ID" ColumnName="TOPIC_ID" />
+                <ScalarProperty Name="TOPIC_NAME" ColumnName="TOPIC_NAME" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTopicFeedBacks">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblTopicFeedBack">
+              <MappingFragment StoreEntitySet="tblTopicFeedBack">
+                <ScalarProperty Name="TOPIC_FEEDBACK_ID" ColumnName="TOPIC_FEEDBACK_ID" />
+                <ScalarProperty Name="TOPIC_ID" ColumnName="TOPIC_ID" />
+                <ScalarProperty Name="FEEDBACK_ID" ColumnName="FEEDBACK_ID" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTopicUnitsQuizes">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblTopicUnitsQuize">
+              <MappingFragment StoreEntitySet="tblTopicUnitsQuizes">
+                <ScalarProperty Name="TOPIC_UNITS_QUIZES_ID" ColumnName="TOPIC_UNITS_QUIZES_ID" />
+                <ScalarProperty Name="TOPIC_ID" ColumnName="TOPIC_ID" />
+                <ScalarProperty Name="UNIT_ID" ColumnName="UNIT_ID" />
+                <ScalarProperty Name="QUIZ_ID" ColumnName="QUIZ_ID" />
+                <ScalarProperty Name="TOPIC_UNITS_SORTORDER" ColumnName="TOPIC_UNITS_SORTORDER" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUnits">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblUnit">
+              <MappingFragment StoreEntitySet="tblUnits">
+                <ScalarProperty Name="UNIT_ID" ColumnName="UNIT_ID" />
+                <ScalarProperty Name="UNIT_NAME" ColumnName="UNIT_NAME" />
+                <ScalarProperty Name="AUDIO_LINK" ColumnName="AUDIO_LINK" />
+                <ScalarProperty Name="PDF_LINK" ColumnName="PDF_LINK" />
+                <ScalarProperty Name="VIDEO_LINK" ColumnName="VIDEO_LINK" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUnitsProgresses">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblUnitsProgress">
+              <MappingFragment StoreEntitySet="tblUnitsProgress">
+                <ScalarProperty Name="UNIT_PROGRESS_ID" ColumnName="UNIT_PROGRESS_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="UNIT_ID" ColumnName="UNIT_ID" />
+                <ScalarProperty Name="TIME_SPENT" ColumnName="TIME_SPENT" />
+                <ScalarProperty Name="UNITS_STATUS" ColumnName="UNITS_STATUS" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="USER_EMAIL" ColumnName="USER_EMAIL" />
+                <ScalarProperty Name="USER_IMAGE" ColumnName="USER_IMAGE" />
+                <ScalarProperty Name="USER_PASSWORD" ColumnName="USER_PASSWORD" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="CONNECTED_PARENT" ColumnName="CONNECTED_PARENT" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="RECONNECTED_DATE" ColumnName="RECONNECTED_DATE" />
+                <ScalarProperty Name="CONNECTION_ID" ColumnName="CONNECTION_ID" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserCoursePurchases">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblUserCoursePurchase">
+              <MappingFragment StoreEntitySet="tblUserCoursePurchase">
+                <ScalarProperty Name="USER_COURSE_PURCHASE_ID" ColumnName="USER_COURSE_PURCHASE_ID" />
+                <ScalarProperty Name="COURSE_PACKAGE_ID" ColumnName="COURSE_PACKAGE_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="COURSE_PACKAGE_PRICE" ColumnName="COURSE_PACKAGE_PRICE" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserModuleSubscriptions">
+            <EntityTypeMapping TypeName="DBBemrcogModel.tblUserModuleSubscription">
+              <MappingFragment StoreEntitySet="tblUserModuleSubscription">
+                <ScalarProperty Name="USER_MODULE_SUBSCRIPTION_ID" ColumnName="USER_MODULE_SUBSCRIPTION_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
+                <ScalarProperty Name="CRTD_BY" ColumnName="CRTD_BY" />
+                <ScalarProperty Name="CRTD_DATE" ColumnName="CRTD_DATE" />
+                <ScalarProperty Name="UPDT_BY" ColumnName="UPDT_BY" />
+                <ScalarProperty Name="UPDT_DATE" ColumnName="UPDT_DATE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

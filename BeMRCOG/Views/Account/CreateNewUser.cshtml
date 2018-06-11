@@ -1,0 +1,271 @@
+﻿@model BeMRCOG.Models.CreateNewUser_VM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .form-inline > * {
+        margin: 5px 3px;
+    }
+
+    .modal-dialog {
+        /* max-width: 500px; */
+        margin: 250px auto;
+    }
+</style>
+<section class="p-4 mt-5 animated fadeInUp bg-primary landScape-scroll ">
+    <div class="d-block mx-auto " id="div-login-responsive">
+        <a href="javascript:void(0)">
+            <img src="../assets/images/logo_white.png" class="block margin-auto w-50 mb-3" alt="Company Logo">
+        </a>
+        <div class="card p-4 mb-3 ">
+            <div class="row m-0">
+                <div class="col-sm-12 border-right">
+                    <h3 class="text-primary font-weight-normal mb-3">
+                       @Resources.Login.CreateNewUserStr
+                    </h3>
+                    <div class="border rounded-top rounded-bottom">
+                        <div class="row m-0 ">
+                            <div class="col-sm-6 p-1 border-bottom">
+                                <label for="txt-email" class="form-control form-control-lg border-0">@Resources.Login.CreateNewUserEmailStr</label>
+                            </div>
+                            <div class="col p-1 border-bottom">
+                                <input id="txt-email" placeholder="@Resources.Login.CreateNewUserEmailPrompt" class="form-control form-control-lg border-0" />
+                            </div>
+                        </div>
+                        <div class="row m-0 ">
+                            <div class="col-sm-6 p-1 border-bottom">
+                                <label for="txt-cutomerid" class="form-control form-control-lg border-0">@Resources.Login.CreateNewUserCustIDStr</label>
+                            </div>
+                            <div class="col p-1 border-bottom">
+                                <input id="txt-cutomerid" placeholder="@Resources.Login.CreateNewUserCustIDPrompt" class="form-control form-control-lg border-0" />
+                            </div>
+                        </div>
+                        <div class="row m-0 ">
+                            <div class="col-sm-6 p-1 border-bottom">
+                                <span class="form-control form-control-lg border-0">@Resources.Login.CreateNewUserBirthStr</span>
+                                <label for="sel-month" class="sr-only">WCAG</label>
+                                <label for="sel-day" class="sr-only">WCAG</label>
+                                <label for="sel-year" class="sr-only">WCAG</label>
+                            </div>
+                            <div class="col p-1 border-bottom">
+                                <div class="form-inline paddedLeft">
+                                    <select class="dropdown" id="sel-month">
+                                        @foreach (var item in Model.Months)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                    <select class="dropdown" id="sel-day">
+                                        @foreach (var item in Model.Days)
+                                        {
+                                            <option value="@item">@item</option>
+                                        }
+                                    </select>
+                                    <select class="dropdown" id="sel-year">
+                                        @foreach (var item in Model.Years)
+                                        {
+                                            <option value="@item">@item</option>
+                                        }
+                                    </select>
+                                    <span id="span-date-invalid" class="text-danger"></span>
+                                </div>
+                                @*<input id="txt-birth" placeholder="DOB" class="datepicker form-control " />*@
+                            </div>
+                        </div>
+
+                        <div class="row m-0 ">
+                            <div class="col-sm-6 p-1 border-bottom">
+                                <label for="txt-password" class="form-control form-control-lg border-0">@Resources.Login.CreateNewUserPwdStr</label>
+                            </div>
+                            <div class="col p-1 border-bottom">
+                                <div class="form-inline paddedLeft">
+                                    <input type="password"
+                                           data-url='@Url.Action("GetPasswordComplexity","Anonymous")'
+                                           id="txt-password" placeholder="@Resources.Login.CreateNewUserPasswordPrompt" class="border-0" />
+                                    <i class="fa  fa-eye-slash fa-pwd" style="color:black"></i>
+                                    <span id="span-txt-new-password"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 ">
+                            <div class="col-sm-6 p-1 border-bottom form-inline">
+                                <label for="txt-password2" class="form-control form-control-lg border-0">@Resources.Login.CreateNewUserConfirmPwdStr</label>
+                            </div>
+                            <div class="col p-1 border-bottom">
+                                <div class="form-inline paddedLeft">
+                                    <input type="password"
+                                           data-url='@Url.Action("CheckPasswordDuplicate","Anonymous")'
+                                           id="txt-password2" placeholder="@Resources.Login.CreateNewUserPasswordPrompt" class="border-0" />
+                                    <i class="fa  fa-eye-slash fa-pwd2" style="color:black"></i>
+                                    <span id="span-txt-new-password2"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span id="new-user-message" style="color:red" class="small"></span>
+                    </div>
+                    <div>
+                        <span class="form-check-label mt-3 mb-3 text-color">
+                        </span>
+                    </div>
+                    <div class="text-danger" id="div-error"></div>
+
+                    <div class="text-right">
+                        <a class="btn btn-lg btn-primary" id="btn-create" data-url="@Url.Action("CreateUser","Account")">@Resources.Login.CreateNewUserButton</a>
+                        <a class="btn btn-lg btn-primary" href='@Url.Action("Login","Account")'>@Resources.Login.Cancel</a>
+                    </div>
+
+                    <div class="mt-3 small mb-2 text-muted">@Html.Raw(@Resources.Login.License)</div>
+                </div>
+            </div>
+        </div>
+        <div class="row small text-sm-left text-center">
+            <div class="col-sm-8 mb-2">
+                @Resources.Login.CopyRight
+            </div>
+            <div class="col-sm-4 text-sm-right">
+                <a href="javascript:void(0)" class="mr-1">@Resources.Login.Privacy</a> | <a href="javascript:void(0)" class="ml-1">@Resources.Login.Support</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<button data-url='@Url.Action("Login","Account")'
+        type="button" id="btn-show-modal" class="btn btn-primary k-hidden " data-toggle="modal" data-target="#modal_success">
+    View
+</button>
+<div class="modal" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" id="modal_success" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="p-3">
+                    <span class="fa-stack fa-2x">
+                        <i class="fa fa-circle fa-stack-2x text-light"></i>
+                        <i class="fa fa-check fa-stack-1x text-success"></i>
+                    </span>
+                </div>
+                <div class="p-3">
+                    <div class="font-bold h3">Success</div>
+                    <p class="my-3 text-muted">@Resources.Login.UserCreatedStr</p>
+                    <a id="btn-newuser-close"
+                       data-url='@Url.Action("Login","Account")'
+                       href='#' class="btn btn-default m-l-1" @*data-dismiss="modal"*@>Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
+
+        $("#txt-password2").on('blur', function () {
+
+            $.ajax({
+
+                url: $(this).data("url"),
+                data: { newPwd: $("#txt-password").val(), newPwd2: $(this).val() },
+                success: function (data) {
+
+                    if (data.MessageID == "1") {
+                        $("#span-txt-new-password2").html("<i style='color:green' class='fa fa-check fa-2x'></i>");
+                    }
+                    else {
+                        $("#span-txt-new-password2").html("<i style='color:red' class='fa fa-times fa-2x'></i>");
+                    }
+                    $("#span-txt-new-password2-mssg").html('');
+                    $("#span-txt-new-password2-mssg").html(data.Message);
+
+                    //ToggleSaveButton();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                    DisplayError(errorThrown);
+                }
+            });
+        });
+
+        $("#txt-password").on('blur', function () {
+
+            $.ajax({
+
+                url: $(this).data("url"),
+                data: { newPwd: $(this).val() },
+                success: function (data) {
+
+                    if (data.MessageID == "1") {
+                        $("#span-txt-new-password").html("<i style='color:green' class='fa fa-check fa-2x'></i>");
+                    }
+                    else {
+                        $("#span-txt-new-password").html("<i style='color:red' class='fa fa-times fa-2x'></i>");
+                    }
+                    $("#span-txt-new-password-mssg").html('');
+                    $("#span-txt-new-password-mssg").html(data.Message);
+
+                    //ToggleSaveButton();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                    DisplayError(errorThrown);
+                }
+            });
+        });
+
+        $("#btn-newuser-close").click(function () {
+
+            window.location = $(this).data("url");
+        });
+
+        $(".fa-pwd").click(function () {
+
+            var type = $("#txt-password").attr("type");
+            type = type == "password" ? "" : "password";
+            $("#txt-password").attr("type", type);
+
+            $(this).toggleClass('fa-eye fa-eye-slash');
+
+        });
+
+        $(".fa-pwd2").click(function () {
+
+            var type = $("#txt-password2").attr("type");
+            type = type == "password" ? "" : "password";
+            $("#txt-password2").attr("type", type);
+
+            $(this).toggleClass('fa-eye fa-eye-slash');
+
+        });
+
+        $("#chk-toggle-pwd").click(function () {
+
+            var type = $("#txt-password").attr("type");
+            type = type == "password" ? "" : "password";
+            $("#txt-password").attr("type", type);
+        });
+
+        $("#chk-toggle-pwd2").click(function () {
+
+            var type = $("#txt-password2").attr("type");
+            type = type == "password" ? "" : "password";
+            $("#txt-password2").attr("type", type);
+        });
+
+        $(".datepicker").kendoDatePicker({
+            //value: "Nov 11, 2017",
+            format: "MMM dd, yyyy"
+        });
+
+        $('#dd-profile').on('click', function (e) {
+            e.stopPropagation();
+        });
+
+        $('#txt-password:input').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $("#btn-create").click();
+            }
+        });
+    });
+</script>

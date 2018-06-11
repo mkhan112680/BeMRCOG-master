@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    @User.Identity.GetUserName() ;
+    <span>&nbsp;</span>
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        <div class="text-center" style="margin:0 auto;">
+            <a class="btn btn-default btn-sm" href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a>
+        </div>
+    }
+}
+
