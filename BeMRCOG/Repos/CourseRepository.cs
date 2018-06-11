@@ -7,6 +7,27 @@ namespace BeMRCOG.Repos
 {
     public class CourseRepository : BaseRepository
     {
+        public Models.Course GetCourseDetails(int courseID)
+        {
+            Models.Course returnCourse = new Models.Course();
+
+            returnCourse = Entites
+                     .tblCourses
+                     .Select(c => new Models.Course()
+                     {
+                         ID = c.COURSE_ID,
+                         Name = c.COURSE_NAME,
+                         //ModuleCount = Entites.tblCourseModules.Where(m => m.COURSE_ID == c.COURSE_ID).ToList().Count
+                     })
+                     .Where(c => c.ID == courseID)
+                     .SingleOrDefault();
+
+            returnCourse.Modules.AddRange(GetModules(courseID));
+            returnCourse.Packages.AddRange(GetPackages(courseID));
+
+            return returnCourse;
+
+        }
         public List<Models.Course> GetAll()
         {
             return Entites
@@ -30,6 +51,32 @@ namespace BeMRCOG.Repos
                        {
                            ID = m.MODULE_ID,
                            Name = m.MODULE_NAME,
+                       }).ToList();
+
+            return lst;
+        }
+
+        public List<Models.Package> GetPackages(int courseID)
+        {
+            var lst = (from cp in Entites.tblCoursePackages
+                       join p in Entites.tblPackages on cp.PACKAGE_ID equals p.PACKAGE_ID
+                       where
+                       cp.COURSE_ID == courseID
+                       select new Models.Package()
+                       {
+                           ID = p.PACKAGE_ID,
+                           Name = p.PACKAGE_NAME,
+                           Price = p.PACKAGE_PRICE,
+                           ModuleCount = Entites
+                                            .tblPackageModuleCounts
+                                            .Where(x => x.PACKAGE_ID == p.PACKAGE_ID)
+                                            .FirstOrDefault() == null ? 0 :
+                                            
+                                            Entites
+                                            .tblPackageModuleCounts
+                                            .Where(x => x.PACKAGE_ID == p.PACKAGE_ID)
+                                            .FirstOrDefault().MODULE_COUNT
+
                        }).ToList();
 
             return lst;

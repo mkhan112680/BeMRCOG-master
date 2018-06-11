@@ -98,7 +98,8 @@ namespace BeMRCOG.Controllers
         }
         public ActionResult PreviewCourse(int courseID)
         {
-            return PartialView("_PreviewCourse");
+            Course vm = (new Repos.CourseRepository()).GetCourseDetails(courseID);
+            return PartialView("_PreviewCourse", vm);
         }
 
         public ActionResult _NewPackage()

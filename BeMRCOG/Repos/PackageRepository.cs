@@ -19,7 +19,6 @@ namespace BeMRCOG.Repos
             Entites.tblPackages.Add(dnewPackage);
             Entites.SaveChanges();
 
-
             Entites.tblCoursePackages.Add(new tblCoursePackage()
             {
                 PACKAGE_ID = dnewPackage.PACKAGE_ID,
@@ -32,7 +31,14 @@ namespace BeMRCOG.Repos
             var newpackage = Entites.tblPackages.Add(new tblPackage()
             {
                 PACKAGE_NAME = package.Name,
-                PACKAGE_PRICE = package.Price
+                PACKAGE_PRICE = package.Price,
+            });
+            Entites.SaveChanges();
+
+            Entites.tblPackageModuleCounts.Add(new tblPackageModuleCount()
+            {
+                 PACKAGE_ID = newpackage.PACKAGE_ID,
+                 MODULE_COUNT = package.ModuleCount
             });
             Entites.SaveChanges();
 
@@ -42,9 +48,9 @@ namespace BeMRCOG.Repos
           public void AddPackagesToCourse(int courseID, List<int> packageIDs)
         {
             //delete first
-            var lstToDelete = Entites.tblCoursePackages.Where(c => c.COURSE_ID == courseID).ToList();
-            Entites.tblCoursePackages.RemoveRange(lstToDelete);
-            Entites.SaveChanges();
+            //var lstToDelete = Entites.tblCoursePackages.Where(c => c.COURSE_ID == courseID).ToList();
+            //Entites.tblCoursePackages.RemoveRange(lstToDelete);
+            //Entites.SaveChanges();
             //adding
             foreach (var packageID in packageIDs)
             {

@@ -1,5 +1,19 @@
 ﻿<style>
+    .invisible-search-box {
+        display: none;
+    }
 
+    .invisible-search-box-module {
+        display: none;
+    }
+
+    .invisible-search-box-topic {
+        display: none;
+    }
+
+    .k-filter-row {
+        display: none;
+    }
 
     .section {
         border: solid 1px lightgray;
@@ -44,11 +58,10 @@
                 </li>
             </ul>
             <div id="div-courses">
-
                 <div class="form-group">
-                    <select class="dropdown" id="dd-course-viewmode">
-                        <option value="1">View Courses</option>
-                        <option value="2">Add Courses</option>
+                    <select class="form-control" id="dd-course-viewmode">
+                        <option class="" value="1">View Courses</option>
+                        <option class="" value="2">Add Courses</option>
                     </select>
                 </div>
                 <div id="div1" style="display:none">
@@ -71,12 +84,12 @@
                         </table>
                     </div>
                     <hr />
-                    <div class=" form-group row text-center">
+                    <div class=" form-group row text-center mainApp">
                         <div class="form-inline">
                             <label class="col-form-label col-form-label-sm">Search Modules</label>
                             <input type="text" id="txt-search-module" class="k-textbox" />
                             <span id="span-coursemodule-addition-status" style="color:red"></span>
-                            <button class="btn btn-default" id="btn-add-module-in-course">
+                            <button class="btn btn-default" v-on:click="AddModule">
                                 Add To Current Course
                             </button>
                         </div>
@@ -86,25 +99,37 @@
                             <div class="form-inline gridheader">
                                 <div class="col-sm-4 ">ID</div>
                                 <div class="">Name</div>
-
                             </div>
-                            <div id="div-course-modules-added"></div>
+                            <div id="div-coursemodules-added">
+                                <div class="form-inline" v-for="module in modules">
+                                    <div class="col-sm-4 ">{{module.ID}}</div>
+                                    <div class="">{{module.Name}}</div>
+                                </div>
+                            </div>
                         </div>
                         <hr />
                         <div class="form-inline">
                             @*<label class="col-form-label col-form-label-sm">Full Package Price</label>
                                 <input type="text" id="txt-package-price" class="k-textbox" />*@
-                            <a href="" class="btn btn-default" id="hl-addPackages">Add More Packages</a>
+                            <a href="" class="btn btn-default" id="hl-addPackages">Add Packages</a>
                         </div>
                         <br />
                         <div class="form-inline">
                             <label class="col-form-label col-form-label-sm">Currently Added Packages</label>
                             <div class="form-inline gridheader">
-                                <div class="col-sm-4 ">ID</div>
-                                <div class="col-sm-4">Name</div>
-                                <div class="">$Price</div>
+                                <div class="col-sm-3 ">ID</div>
+                                <div class="col-sm-3">Name</div>
+                                <div class="col-sm-3">Module Count</div>
+                                <div class="">Price</div>
                             </div>
-                            <div id="div-course-packages-added"></div>
+                            <div id="coursepackages">
+                                <div class="form-inline" v-for="package in packages">
+                                    <div class="col-sm-3">{{package.ID}}</div>
+                                    <div class="col-sm-3">{{package.Name}}</div>
+                                    <div class="col-sm-3">{{package.ModuleCount}}</div>
+                                    <div class="">${{package.Price}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <hr />
@@ -113,19 +138,17 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 text-center">
-                            <span id="span-course-result" style="color:red" class="small"></span>
+                            <span id="span-course-result" style="color:green" class="small"></span>
                         </div>
                     </div>
                 </div>
-
-
-                <hr />
                 <div id="div2">
                     <div>
                         <div class="form-inline text-center">
-                            <label for="txt-course-search" class="k-content label label-info ">Search By Name</label>
+                            <label for="txt-course-search" class="col-form-label col-form-label-sm">Search Courses By Name</label>
                             <input type="text" id="txt-course-search" class="k-textbox" />
                         </div>
+                        <br />
                         <div id="div-grid-course"></div>
                     </div>
                 </div>
@@ -192,26 +215,6 @@
         </div>
     </div>
 </div>
-<style>
-
-
-
-    .invisible-search-box {
-        display: none;
-    }
-
-    .invisible-search-box-module {
-        display: none;
-    }
-
-    .invisible-search-box-topic {
-        display: none;
-    }
-
-    .k-filter-row {
-        display: none;
-    }
-</style>
 <script id="moduleDetailTemplate" type="text/x-kendo-tmpl">
     <a href="javascript:void(0)" data-toggle="modal" data-target="\\#assetDetailModal">#=ModuleCount#</a>
 </script>
@@ -246,14 +249,65 @@
         <div class="">$#=Price#</div>
     </div>
 </script>
-
 <script>
     $(document).ready(function () {
+
+        function ModuleExists(lst , moduleID) {
+            return lst.some(function (el) {
+                return el.ID === moduleID;
+            });
+        }
+        function PackageExists(lst, packageID) {
+            return lst.some(function (el) {
+                return el.ID === packageID;
+            });
+        }
+
+        var courseApp = new Vue({
+            el: '.mainApp',
+            data: {
+                modules: [],
+                packages: []
+            },
+            methods: {
+
+                Clear: function () {
+                    this.modules = [];
+                    this.packages = [];
+                },
+
+                AddModule: function () {
+
+                    var value = $("#txt-search-module").val();
+                    if (value.length == 0)
+                        return;
+                    var moduleID = $("#txt-search-module").attr("dataid");
+                    if (!ModuleExists(this.modules, moduleID)) {
+                        var newModule = { ID: moduleID, Name: value };
+                        this.modules.push(newModule);
+                    }
+                },
+                GetModules: function () {
+                    //console.log(this.modules);
+                    return this.modules.map( p  => p.ID);
+                },
+
+                AddPackage: function (data) {
+
+                    if (!PackageExists(this.packages, data.ID)) {
+                        this.packages.push(data);
+                    }
+                },
+                GetPackages: function () {
+                    //console.log(this.modules);
+                    return this.packages.map(p => p.ID);
+                }
+            }
+        });
 
         function onSearchContractsAutoComplete(e) {
             return { searchTerm: $("#txt-search-module").val() };
         }
-
 
         $("#dd-course-viewmode").change(function () {
 
@@ -278,7 +332,6 @@
                 default:
             }
         });
-
 
         $("#txt-search-module").kendoAutoComplete({
             //minLength: 3,
@@ -311,52 +364,13 @@
             $('.invisible-search-box').val($(this).val()).trigger("change");;
         });
 
-        $("#btn-add-module-in-course").click(function () {
-
-            var moduleName = $("#txt-search-module").val();
-
-            if (moduleName.length == 0)
-                return;
-
-            var moduleID = $("#txt-search-module").attr("dataid");
-            var newModule = { ID: moduleID, Name: moduleName };
-
-            //do not add courses already added
-            var duplicateFound = false;
-            $("#div-course-modules-added .moduleid").each(function () {
-                if ($(this).html() == moduleID) {
-                    duplicateFound = true;
-                    //break;
-                }
-            });
-            if (!duplicateFound) {
-                var template = kendo.template($("#newModuleAddedToCourseTemplate").html());
-                var newModuleHtml = template(newModule);
-                //alert(newModuleHtml);
-                $("#div-course-modules-added").append(newModuleHtml);
-            }
-        });
-
         function GetModulesSelected() {
-            var list = [];
-            $("#div-course-modules-added .moduleid").each(function () {
-                //data = {};
-                //data.ID = );//moduleID
-                list.push(parseInt($(this).html()));
-            });
-            //console.log(list);
-            return list;
+            return courseApp.GetModules();
         }
 
         function GetPackagesSelected() {
-            var list = [];
-            $("#div-course-packages-added .packageid").each(function () {
-                //data = {};
-                //data.ID = );//moduleID
-                list.push(parseInt($(this).html()));
-            });
-            //console.log(list);
-            return list;
+            return courseApp.GetPackages();
+
         }
 
         //$(".btn-course-preview").click(function (e) {
@@ -367,7 +381,7 @@
             $.ajax({
                 //method: 'post',
                 url: '@Url.Action("PreviewCourse","Home")',
-                data: { courseID :1 },
+                data: { courseID: $(this).data("rowid") },
                 success: function (data) {
 
                    $("#div-course-preview").html("<div class='text-center'><img src='../Images/ajax-loader.gif' /></div>");
@@ -402,7 +416,11 @@
 
             e.preventDefault();
 
-            var Data = { Name: $("#txt-package-email").val(), Price: $("#txt-package-price").val() };
+            var Data = {
+                Name: $("#txt-package-email").val(),
+                Price: $("#txt-package-price").val(),
+                ModuleCount : $("#txt-package-moduleCount").val()
+            };
 
             $.ajax({
                 method: 'post',
@@ -410,11 +428,13 @@
                 data: Data,
                 success: function (data) {
 
-                    var newPackage = { ID: data.ID , Name: Data.Name, Price: Data.Price };
+                    var newPackage = {
+                                        ID: data.ID,
+                                        Name: Data.Name,
+                                        Price: Data.Price,
+                                        ModuleCount: Data.ModuleCount};
 
-                    var template = kendo.template($("#newPackageTemplate").html());
-                    var newPackageHtml = template(newPackage);
-                    $("#div-course-packages-added").append(newPackageHtml);
+                    courseApp.AddPackage(newPackage);
 
                     $("#addPackageModal").modal("hide");
                 },
@@ -437,10 +457,13 @@
                 success: function (data) {
 
                     $("#span-course-result").html(data.Message);
+
                     $("#txt-new-course").val("");
                     $("#txt-course-desc").val("");
                     $("#txt-search-module").val("");
-                    $("#div-course-modules-added").html("");
+
+
+                    courseApp.Clear();
 
                     LoadCourseGrid();
                 },
@@ -451,8 +474,8 @@
 
         var LoadCourseGrid = function () {
 
-            if ($("#div-grid-course").data("kendoGrid") != null)
-                $("#div-grid-course").kendoGrid('destroy').empty();
+            //if ($("#div-grid-course").data("kendoGrid") != null)
+            //    $("#div-grid-course").kendoGrid('destroy').empty();
 
             $("#div-grid-course").kendoGrid({
                dataSource:{
@@ -500,10 +523,9 @@
                     {
                         title: "Module Count",
                         template: kendo.template($("#moduleDetailTemplate").html()),
-                        headerattributes: { style: "text-align:center" },
+                        headerAttributes: { style: "text-align:center;width:200px;" },
                         attributes: {
-
-                            style: "text-align: center;  "
+                            style: "text-align: center;width:200px;"
                         },
                         width: "200px",
                     },
@@ -511,12 +533,16 @@
                     {
                         title: "Preview",
                         //template: kendo.template($("#previewCourseTemplate").html()),
-                        template: '<a class=\'btn btn-default btn-course-preview \' href=\'@Url.Action("CoursePreview","Home")\'>Preview</a>',
+                        template: '<a data-rowid="#=ID#" class=\'btn btn-default btn-course-preview \' href=\'@Url.Action("CoursePreview","Home")\'>Preview</a>',
+                        headerAttributes: { style: "text-align:center;" },
+                        attributes: {
+                            style: "text-align: center;"
+                        },
                         width: "200px",
 
                     }
                 ],
-                height: 350,
+                height: 600,
                 scrollable: true,
                 selectable: true,
                 sortable: true,
